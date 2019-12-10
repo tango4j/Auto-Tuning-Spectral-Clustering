@@ -83,42 +83,42 @@ iafq /path/sample_CH_xvector/cos_scores/iafq.npy
 ...
 ```
 
-**threshold**: Manually setup a threshold. We apply this threshold for all utterances.  
+* **threshold**: Manually setup a threshold. We apply this threshold for all utterances.  
 ex) 
 ```bash
 threshold=0.05
 ```
 
-**score-metric**: Use 'cos' to apply for affinity matrix based on cosine similarity.  
+* **score-metric**: Use 'cos' to apply for affinity matrix based on cosine similarity.  
 ex) 
 ```bash
 score_metric='cos'
 ```
 
-**max_speaker**: Default is 8. If you do not provide oracle number of speakers (reco2num_spk), the estimated number of speakers is capped by _max_speaker_.  
+* **max_speaker**: Default is 8. If you do not provide oracle number of speakers (reco2num_spk), the estimated number of speakers is capped by _max_speaker_.  
 ex) 
 ```bash
 max_speaker=8
 ```
-**embedding_scp**:
+* **embedding_scp**:
 embedding_scp $embedding_scp \
 ```bash
 threshold
 ```
 
-**spt_est_thres**:
+* **spt_est_thres**:
 spt_est_thres $spt_est_thres \
 ```bash
 spt_est_thres='None'
 spt_est_thres="thres_utts.txt"
 ```
 
-**segment_file_input_path**:
+* **segment_file_input_path**:
 ```bash
 threshold
 ```
 
-**reco2num_spk**: A list of oracle number of speakers. Default is 'None'.
+* **reco2num_spk**: A list of oracle number of speakers. Default is 'None'.
 reco2num_spk $reco2num_spk
 ```bash
 reco2num_spk='None'
