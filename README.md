@@ -124,6 +124,14 @@ reco2num_spk='None'
 reco2num_spk='oracle_num_of_spk.txt'
 ```
 
+oracle_num_of_spk.txt
+```
+iaaa 2
+iafq 2
+iabe 4
+iadf 6
+...
+```
 
 ## Authors
 
