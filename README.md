@@ -45,6 +45,21 @@ This command will create a folder named "env_nmesc".
 
 ### Usage Example
 
+```bash
+python spectral_opt.py --distance_score_file $DISTANCE_SCORE_FILE \
+                       --threshold $threshold \
+                       --score-metric $score_metric \
+                       --xvector_window $xvector_window \
+                       --asr_spk_turn_est_scp 'None' \
+                       --max_speaker $max_speaker \
+                       --max_speaker_list 'None'\
+                       --embedding_scp $embedding_scp \
+                       --spt_est_thres $spt_est_thres \
+                       --segment_file_input_path $SEGMENT_FILE_INPUT_PATH \
+                       --spk_labels_out_path $SPK_LABELS_OUT_PATH \
+                       --reco2num_spk $reco2num_spk || exit 1
+```
+
 distance_score_file: A list of affinity matrix files.  
 Two options are available:
 (1) scores.scp: Kaldi style scp file that contains the absolute path to .ark files and its binary address. Space separted <utt_id> and <path>.
@@ -109,20 +124,6 @@ threshold
 reco2num_spk $reco2num_spk
 ```bash
 threshold
-```
-```bash
-python spectral_opt.py --distance_score_file $DISTANCE_SCORE_FILE \
-                       --threshold $threshold \
-                       --score-metric $score_metric \
-                       --xvector_window $xvector_window \
-                       --asr_spk_turn_est_scp 'None' \
-                       --max_speaker $max_speaker \
-                       --max_speaker_list 'None'\
-                       --embedding_scp $embedding_scp \
-                       --spt_est_thres $spt_est_thres \
-                       --segment_file_input_path $SEGMENT_FILE_INPUT_PATH \
-                       --spk_labels_out_path $SPK_LABELS_OUT_PATH \
-                       --reco2num_spk $reco2num_spk || exit 1
 ```
 
 ## Authors
