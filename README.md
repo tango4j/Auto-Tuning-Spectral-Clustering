@@ -12,6 +12,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### TLDR; One-click demo file.
 
 * _run_demo_clustering.sh_ installs the virtualenv and runs spectral clustering example.
+* [**virtualenv**](https://docs.python-guide.org/dev/virtualenvs/) should be installed on your machine.
 
 ```bash
 source run_demo_clustering.sh
@@ -30,7 +31,7 @@ kaldi_io==0.9.1
 
 ### Installing
 
-You have to first have [_virtualenv_ ](https://docs.python-guide.org/dev/virtualenvs/) installed on your machine. Install [_virtualenv_ ](https://docs.python-guide.org/dev/virtualenvs/) with the following command:
+You have to first have [**virtualenv**](https://docs.python-guide.org/dev/virtualenvs/) installed on your machine. Install [**virtualenv**](https://docs.python-guide.org/dev/virtualenvs/) with the following command:
 ```
 sudo pip3 install virtualenv 
 ```
