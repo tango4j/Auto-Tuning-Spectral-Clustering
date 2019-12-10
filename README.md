@@ -100,11 +100,6 @@ ex)
 ```bash
 max_speaker=8
 ```
-* **embedding_scp**:
-embedding_scp $embedding_scp \
-```bash
-threshold
-```
 
 * **spt_est_thres**:
 spt_est_thres $spt_est_thres \
