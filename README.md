@@ -12,7 +12,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### TLDR; One-click demo file.
 
-* _run_demo_clustering.sh_ installs the virtualenv and runs spectral clustering example.
+* _run_demo_clustering.sh_ installs a virtualenv and runs spectral a clustering example.
 * [**virtualenv**](https://docs.python-guide.org/dev/virtualenvs/) should be installed on your machine.
 
 ```bash
