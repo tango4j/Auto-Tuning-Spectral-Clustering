@@ -33,7 +33,14 @@ If you installed virtualenv, run the "install_venv.sh" script to make a virtual-
 ```
 This command will create a folder named "env_nmesc".
 
+### TLDR; Just give me the one-click demo file.
 
+* Run the following script.  
+* _run_demo_clustering.sh_ installs the virtualenv and runs spectral clustering example.
+
+```bash
+source run_demo_clustering.sh
+```
 
 
 ## Authors
