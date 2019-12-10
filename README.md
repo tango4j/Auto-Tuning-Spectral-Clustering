@@ -23,20 +23,15 @@ kaldi_io==0.9.1
 ```
 Use _*install_venv.sh*_ to install the necessary python libraries
 
-You have to first have "virtualenv" installed on your machine.
+You have to first have [_virtualenv_ ](https://docs.python-guide.org/dev/virtualenvs/) installed on your machine. Install [_virtualenv_ ](https://docs.python-guide.org/dev/virtualenvs/) with the following command:
 ```
 sudo pip3 install virtualenv 
 ```
 
-- install_venv.sh
+If you installed virtualenv, run the "install_venv.sh" script to make a virtual-env.
 ```
-virtualenv -p $(which python3) $1
-source $PWD/"$1"/bin/activate
-pip3 install -U scikit-learn==0.22
-pip3 install kaldi_io==0.9.1
-pip3 ipdb
+./install_venv.sh
 ```
-
 ### Installing
 
 A step by step series of examples that tell you how to get a development env running
