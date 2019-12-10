@@ -1,8 +1,8 @@
 
 # Auto Tuning Spectral Clustering
 
-<img src="./pics/adj_mat.png" width="50%" height="50%">
-<img src="./pics/gp_vs_nme.png" width="50%" height="50%">
+<img src="./pics/adj_mat.png" width="35%" height="35%">
+<img src="./pics/gp_vs_nme.png" width="40%" height="40%">
 
 
 Python3 code for the IEEE SPL paper ["Auto-Tuning Spectral Clustering for SpeakerDiarization Using Normalized Maximum Eigengap"](https://drive.google.com/file/d/1CdEJPrpW6pRCObrppcZnw0_hRwWIHxi8/view?usp=sharing)
