@@ -1,0 +1,124 @@
+command line (run on 2019 Dec 9 at 13:29:21) Version: 22  /staging/sn/mp_323/Dihard2/dihard2-is19/usc_diar_system/src/md-eval.pl -afc -1 -c 0.25 -r /staging/sn/mp_323/Dihard2/datasets/NIST_SRE_2000_CALLHOME_s/rttm/rttm -s -
+
+Time-based metadata alignment
+
+Metadata evaluation parameters:
+    time-optimized metadata mapping
+        max gap between matching metadata events = 1 sec
+        max extent to match for SU's = 0.5 sec
+
+Speaker Diarization evaluation parameters:
+    The max time to extend no-score zones for NON-LEX exclusions is 0.5 sec
+    The no-score collar at SPEAKER boundaries is 0.25 sec
+
+Exclusion zones for evaluation and scoring are:
+                             -----MetaData-----        -----SpkrData-----
+     exclusion set name:     DEFAULT    DEFAULT        DEFAULT    DEFAULT
+     token type/subtype      no-eval   no-score        no-eval   no-score
+             (UEM)              X                         X
+         LEXEME/un-lex                    X                          
+        NON-LEX/breath                                              X
+        NON-LEX/cough                                               X
+        NON-LEX/laugh                                               X
+        NON-LEX/lipsmack                                            X
+        NON-LEX/other                                               X
+        NON-LEX/sneeze                                              X
+        NOSCORE/<na>            X         X               X         X
+ NO_RT_METADATA/<na>            X                                    
+             SU/unannotated               X                          
+
+*** Performance analysis for Speaker Diarization for c=0 f=iaaa ***
+
+    EVAL TIME =     72.51 secs
+  EVAL SPEECH =     65.66 secs (90.55 percent of evaluated time)
+  SCORED TIME =     43.28 secs (59.69 percent of evaluated time)
+SCORED SPEECH =     42.82 secs (98.94 percent of scored time)
+   EVAL WORDS =      0        
+ SCORED WORDS =      0         (100.00 percent of evaluated words)
+---------------------------------------------
+MISSED SPEECH =      0.00 secs ( 0.00 percent of scored time)
+FALARM SPEECH =      0.00 secs ( 0.00 percent of scored time)
+ MISSED WORDS =      0         (100.00 percent of scored words)
+---------------------------------------------
+SCORED SPEAKER TIME =     42.82 secs (100.00 percent of scored speech)
+MISSED SPEAKER TIME =      0.00 secs ( 0.00 percent of scored speaker time)
+FALARM SPEAKER TIME =      0.00 secs ( 0.00 percent of scored speaker time)
+ SPEAKER ERROR TIME =      0.12 secs ( 0.28 percent of scored speaker time)
+SPEAKER ERROR WORDS =      0         (100.00 percent of scored speaker words)
+---------------------------------------------
+ OVERALL SPEAKER DIARIZATION ERROR = 0.28 percent of scored speaker time  `(c=0 f=iaaa)
+---------------------------------------------
+ Speaker type confusion matrix -- speaker weighted
+  REF\SYS (count)      unknown               MISS              
+unknown                   2 / 100.0%          0 /   0.0%
+  FALSE ALARM             0 /   0.0%
+---------------------------------------------
+ Speaker type confusion matrix -- time weighted
+  REF\SYS (seconds)    unknown               MISS              
+unknown               42.82 / 100.0%       0.00 /   0.0%
+  FALSE ALARM          0.00 /   0.0%
+---------------------------------------------
+
+*** Performance analysis for Speaker Diarization for c=0 f=iafq ***
+
+    EVAL TIME =     56.42 secs
+  EVAL SPEECH =     50.59 secs (89.67 percent of evaluated time)
+  SCORED TIME =     40.93 secs (72.55 percent of evaluated time)
+SCORED SPEECH =     39.79 secs (97.21 percent of scored time)
+   EVAL WORDS =      0        
+ SCORED WORDS =      0         (100.00 percent of evaluated words)
+---------------------------------------------
+MISSED SPEECH =      0.00 secs ( 0.00 percent of scored time)
+FALARM SPEECH =      0.00 secs ( 0.00 percent of scored time)
+ MISSED WORDS =      0         (100.00 percent of scored words)
+---------------------------------------------
+SCORED SPEAKER TIME =     39.79 secs (100.00 percent of scored speech)
+MISSED SPEAKER TIME =      0.00 secs ( 0.00 percent of scored speaker time)
+FALARM SPEAKER TIME =      0.00 secs ( 0.00 percent of scored speaker time)
+ SPEAKER ERROR TIME =      0.15 secs ( 0.36 percent of scored speaker time)
+SPEAKER ERROR WORDS =      0         (100.00 percent of scored speaker words)
+---------------------------------------------
+ OVERALL SPEAKER DIARIZATION ERROR = 0.36 percent of scored speaker time  `(c=0 f=iafq)
+---------------------------------------------
+ Speaker type confusion matrix -- speaker weighted
+  REF\SYS (count)      unknown               MISS              
+unknown                   2 / 100.0%          0 /   0.0%
+  FALSE ALARM             0 /   0.0%
+---------------------------------------------
+ Speaker type confusion matrix -- time weighted
+  REF\SYS (seconds)    unknown               MISS              
+unknown               39.79 / 100.0%       0.00 /   0.0%
+  FALSE ALARM          0.00 /   0.0%
+---------------------------------------------
+
+*** Performance analysis for Speaker Diarization for ALL ***
+
+    EVAL TIME =    128.93 secs
+  EVAL SPEECH =    116.25 secs (90.17 percent of evaluated time)
+  SCORED TIME =     84.21 secs (65.31 percent of evaluated time)
+SCORED SPEECH =     82.61 secs (98.10 percent of scored time)
+   EVAL WORDS =      0        
+ SCORED WORDS =      0         (100.00 percent of evaluated words)
+---------------------------------------------
+MISSED SPEECH =      0.00 secs ( 0.00 percent of scored time)
+FALARM SPEECH =      0.00 secs ( 0.00 percent of scored time)
+ MISSED WORDS =      0         (100.00 percent of scored words)
+---------------------------------------------
+SCORED SPEAKER TIME =     82.61 secs (100.00 percent of scored speech)
+MISSED SPEAKER TIME =      0.00 secs ( 0.00 percent of scored speaker time)
+FALARM SPEAKER TIME =      0.00 secs ( 0.00 percent of scored speaker time)
+ SPEAKER ERROR TIME =      0.27 secs ( 0.32 percent of scored speaker time)
+SPEAKER ERROR WORDS =      0         (100.00 percent of scored speaker words)
+---------------------------------------------
+ OVERALL SPEAKER DIARIZATION ERROR = 0.32 percent of scored speaker time  `(ALL)
+---------------------------------------------
+ Speaker type confusion matrix -- speaker weighted
+  REF\SYS (count)      unknown               MISS              
+unknown                   4 / 100.0%          0 /   0.0%
+  FALSE ALARM             0 /   0.0%
+---------------------------------------------
+ Speaker type confusion matrix -- time weighted
+  REF\SYS (seconds)    unknown               MISS              
+unknown               82.61 / 100.0%       0.00 /   0.0%
+  FALSE ALARM          0.00 /   0.0%
+---------------------------------------------

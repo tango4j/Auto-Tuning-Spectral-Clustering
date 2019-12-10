@@ -1,0 +1,107 @@
+# nnet3-xvector-compute --use-gpu=yes --min-chunk-size=20 --chunk-size=400 "nnet3-copy --nnet-config=/home/inctrl/kaldi/egs/callhome_diarization/xvec_pack/exp/xvector_nnet_1a/extract.config /home/inctrl/kaldi/egs/callhome_diarization/xvec_pack/exp/xvector_nnet_1a/final.raw - |" scp:/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/xvector_embeddings/subsegments_data/split2/1/feats.scp ark,scp:/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/xvector_embeddings/xvector.1.ark,/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/xvector_embeddings/xvector.1.scp 
+# Started at Mon Dec  9 13:29:06 PST 2019
+#
+nnet3-xvector-compute --use-gpu=yes --min-chunk-size=20 --chunk-size=400 'nnet3-copy --nnet-config=/home/inctrl/kaldi/egs/callhome_diarization/xvec_pack/exp/xvector_nnet_1a/extract.config /home/inctrl/kaldi/egs/callhome_diarization/xvec_pack/exp/xvector_nnet_1a/final.raw - |' scp:/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/xvector_embeddings/subsegments_data/split2/1/feats.scp ark,scp:/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/xvector_embeddings/xvector.1.ark,/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/xvector_embeddings/xvector.1.scp 
+WARNING (nnet3-xvector-compute[5.4.253~1-34df]:SelectGpuId():cu-device.cc:202) Not in compute-exclusive mode.  Suggestion: use 'nvidia-smi -c 3' to set compute exclusive mode
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:SelectGpuIdAuto():cu-device.cc:320) Selecting from 4 GPUs
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:SelectGpuIdAuto():cu-device.cc:335) cudaSetDevice(0): GeForce GTX 1080 Ti	free:11032M, used:145M, total:11177M, free/total:0.987027
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:SelectGpuIdAuto():cu-device.cc:335) cudaSetDevice(1): GeForce GTX 1080 Ti	free:11033M, used:145M, total:11178M, free/total:0.987029
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:SelectGpuIdAuto():cu-device.cc:335) cudaSetDevice(2): GeForce GTX 1080 Ti	free:11033M, used:145M, total:11178M, free/total:0.987029
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:SelectGpuIdAuto():cu-device.cc:335) cudaSetDevice(3): GeForce GTX 1080 Ti	free:11033M, used:145M, total:11178M, free/total:0.987029
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:SelectGpuIdAuto():cu-device.cc:382) Trying to select device: 1 (automatically), mem_ratio: 0.987029
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:SelectGpuIdAuto():cu-device.cc:401) Success selecting device 1 free mem ratio: 0.987029
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:FinalizeActiveGpu():cu-device.cc:255) The active GPU is [1]: GeForce GTX 1080 Ti	free:10971M, used:207M, total:11178M, free/total:0.981482 version 6.1
+nnet3-copy --nnet-config=/home/inctrl/kaldi/egs/callhome_diarization/xvec_pack/exp/xvector_nnet_1a/extract.config /home/inctrl/kaldi/egs/callhome_diarization/xvec_pack/exp/xvector_nnet_1a/final.raw - 
+WARNING (nnet3-copy[5.4.253~1-34df]:Check():nnet-nnet.cc:789) Node tdnn6.relu is never used to compute any output.
+WARNING (nnet3-copy[5.4.253~1-34df]:Check():nnet-nnet.cc:789) Node tdnn6.batchnorm is never used to compute any output.
+WARNING (nnet3-copy[5.4.253~1-34df]:Check():nnet-nnet.cc:789) Node output.affine is never used to compute any output.
+WARNING (nnet3-copy[5.4.253~1-34df]:Check():nnet-nnet.cc:789) Node output.log-softmax is never used to compute any output.
+LOG (nnet3-copy[5.4.253~1-34df]:main():nnet3-copy.cc:114) Copied raw neural net from /home/inctrl/kaldi/egs/callhome_diarization/xvec_pack/exp/xvector_nnet_1a/final.raw to -
+WARNING (nnet3-xvector-compute[5.4.253~1-34df]:Check():nnet-nnet.cc:789) Node tdnn6.relu is never used to compute any output.
+WARNING (nnet3-xvector-compute[5.4.253~1-34df]:Check():nnet-nnet.cc:789) Node tdnn6.batchnorm is never used to compute any output.
+WARNING (nnet3-xvector-compute[5.4.253~1-34df]:Check():nnet-nnet.cc:789) Node output.affine is never used to compute any output.
+WARNING (nnet3-xvector-compute[5.4.253~1-34df]:Check():nnet-nnet.cc:789) Node output.log-softmax is never used to compute any output.
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:RemoveOrphanNodes():nnet-nnet.cc:948) Removed 8 orphan nodes.
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:RemoveOrphanComponents():nnet-nnet.cc:847) Removing 13 orphan components.
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:Collapse():nnet-utils.cc:1378) Added 5 components, removed 13
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00000-00327-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00000-00327-00000075-00000225, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00000-00327-00000150-00000300, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00000-00327-00000225-00000327, using chunk size  of 102
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00339-00545-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00339-00545-00000075-00000206, using chunk size  of 131
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00551-00595-00000000-00000044, using chunk size  of 44
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00614-00913-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00614-00913-00000075-00000225, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00614-00913-00000150-00000299, using chunk size  of 149
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00924-01522-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00924-01522-00000075-00000225, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00924-01522-00000150-00000300, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00924-01522-00000225-00000375, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00924-01522-00000300-00000450, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00924-01522-00000375-00000525, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-00924-01522-00000450-00000598, using chunk size  of 148
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-01564-01777-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-01564-01777-00000075-00000213, using chunk size  of 138
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-01799-01980-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-01799-01980-00000075-00000181, using chunk size  of 106
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-02016-02149-00000000-00000133, using chunk size  of 133
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-02207-02885-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-02207-02885-00000075-00000225, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-02207-02885-00000150-00000300, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-02207-02885-00000225-00000375, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-02207-02885-00000300-00000450, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-02207-02885-00000375-00000525, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-02207-02885-00000450-00000600, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-02207-02885-00000525-00000675, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-02207-02885-00000600-00000678, using chunk size  of 78
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-02896-03030-00000000-00000134, using chunk size  of 134
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-03049-03253-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-03049-03253-00000075-00000204, using chunk size  of 129
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-03309-03664-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-03309-03664-00000075-00000225, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-03309-03664-00000150-00000300, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-03309-03664-00000225-00000355, using chunk size  of 130
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-03699-03746-00000000-00000047, using chunk size  of 47
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-03786-03833-00000000-00000047, using chunk size  of 47
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-03852-04444-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-03852-04444-00000075-00000225, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-03852-04444-00000150-00000300, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-03852-04444-00000225-00000375, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-03852-04444-00000300-00000450, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-03852-04444-00000375-00000525, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-03852-04444-00000450-00000592, using chunk size  of 142
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-04502-04856-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-04502-04856-00000075-00000225, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-04502-04856-00000150-00000300, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-04502-04856-00000225-00000354, using chunk size  of 129
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-04860-05192-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-04860-05192-00000075-00000225, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-04860-05192-00000150-00000300, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-04860-05192-00000225-00000332, using chunk size  of 107
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-05213-05318-00000000-00000105, using chunk size  of 105
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-05385-05657-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-05385-05657-00000075-00000225, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-05385-05657-00000150-00000272, using chunk size  of 122
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-05714-06130-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-05714-06130-00000075-00000225, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-05714-06130-00000150-00000300, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-05714-06130-00000225-00000375, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-05714-06130-00000300-00000416, using chunk size  of 116
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-06134-06673-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-06134-06673-00000075-00000225, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-06134-06673-00000150-00000300, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-06134-06673-00000225-00000375, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-06134-06673-00000300-00000450, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-06134-06673-00000375-00000525, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-06134-06673-00000450-00000539, using chunk size  of 89
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-06711-06992-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-06711-06992-00000075-00000225, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-06711-06992-00000150-00000281, using chunk size  of 131
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-07042-07251-00000000-00000150, using chunk size  of 150
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:165) Chunk size of 400 is greater than the number of rows in utterance: iaaa-07042-07251-00000075-00000209, using chunk size  of 134
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:221) Time taken 5.11727s: real-time factor assuming 100 frames/sec is 0.0485464
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:main():nnet3-xvector-compute.cc:224) Done 76 utterances, failed for 0
+LOG (nnet3-xvector-compute[5.4.253~1-34df]:~CachingOptimizingCompiler():nnet-optimize.cc:710) 1.47 seconds taken in nnet3 compilation total (breakdown: 1.34 compilation, 0.0993 optimization, 0 shortcut expansion, 0.0242 checking, 3.05e-05 computing indexes, 0.0135 misc.) + 0 I/O.
+# Accounting: time=5 threads=1
+# Ended (code 0) at Mon Dec  9 13:29:11 PST 2019, elapsed time 5 seconds

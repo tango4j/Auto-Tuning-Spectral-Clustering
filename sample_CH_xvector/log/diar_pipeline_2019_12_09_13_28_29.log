@@ -1,0 +1,42 @@
+=== [INFO] =========================================================================
+=== [INFO] kaldi_dir: /home/inctrl/kaldi <<<<<
+=== [INFO] stage: 5
+=== [INFO] python_env: /home/inctrl/virtualenvs/py3_keras_venv/bin/activate
+=== [INFO] input_wav_dir: /staging/sn/mp_323/Dihard2/datasets/NIST_SRE_2000_CALLHOME_s/nist_sre_2000_disc8_wav8k
+=== [INFO] mfcc_embd_reseg: mfcc8k_callhome_diarization_v2.conf
+=== [INFO] mfcc_vad: mfcc_hires_usc_dihard8k.conf
+=== [INFO] use_gpu: true
+=== [INFO] xvector_type: xvecCH
+=== [INFO] xvector_window: 1.5
+=== [INFO] xvector_period: 0.75
+=== [INFO] xvector_min_segment: 0.5
+=== [INFO] working_dir: /raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5
+=== [INFO] ref_rttm_dir: /staging/sn/mp_323/Dihard2/datasets/NIST_SRE_2000_CALLHOME_s/rttm
+=== [INFO] xvec_dir: /home/inctrl/kaldi/egs/callhome_diarization/xvec_pack
+=== [INFO] plda_trained_models: /staging/sn/mp_323/Dihard2/DIHARD_2019_baseline_alltracks/plda_baseline_track1
+=== [INFO] use_pre_segment_data: true
+=== [INFO] vad: refSAD
+=== [INFO] score_metric: cos
+=== [INFO] mix_alpha: NoMix
+=== [INFO] use_reco2num_spk_data: true
+=== [INFO] spt_est_thres: EigRatio
+=== [INFO] max_speaker_list : None
+=== [INFO] alpha_est_weights: None
+=== [INFO] max_speaker: 8
+=== [INFO] asr_spk_turn_est_scp: None
+=== [INFO] asr_word_reseg: no_asr
+=== [INFO] clustering_alg: spt
+=== [INFO] plda_trained_models: /staging/sn/mp_323/Dihard2/DIHARD_2019_baseline_alltracks/plda_baseline_track1
+=== [INFO] md_eval_setting: std
+=== [INFO] resegmentation: false
+=== [INFO] =========================================================================
+=== [CHECK] pushd to dir---> /home/inctrl/kaldi/egs/callhome_diarization/v2
+=== [INFO] /home/inctrl/kaldi/egs/callhome_diarization/v2
+=== [INFO] [PATH ENV] KALDI ROOT: /home/inctrl/kaldi
+=== [CHECK] ./baseline_diar_with_reseg.sh --- Line 322: wav.scp file generation was succesful! 
+=== [INFO] reco.list: 
+=== [INFO] iaaa.wav iafq.wav
+=== [INFO] Total of 2 wav files
+=== [CHECK] ./baseline_diar_with_reseg.sh --- Line 351: spk2utt file generation was succesful! 
+=== [ERROR] ./baseline_diar_with_reseg.sh --- Line 607: Failed to excute sed.
+./baseline_diar_with_reseg.sh --- Line 607: Failed to excute sed.

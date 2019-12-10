@@ -1,0 +1,6 @@
+# ivector-mean scp:/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/xvector_embeddings/xvector.scp /raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/xvector_embeddings/mean.vec 
+# Started at Mon Dec  9 13:29:17 PST 2019
+#
+ivector-mean scp:/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/xvector_embeddings/xvector.scp /raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/xvector_embeddings/mean.vec 
+# Accounting: time=0 threads=1
+# Ended (code 0) at Mon Dec  9 13:29:17 PST 2019, elapsed time 0 seconds

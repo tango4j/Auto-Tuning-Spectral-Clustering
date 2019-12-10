@@ -1,0 +1,9 @@
+# apply-cmvn-sliding --norm-vars=false --center=true --cmn-window=300 scp:/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/frames_and_segments/split2/1/feats.scp ark:- | copy-feats --compress=true --write-num-frames=ark,t:/raid0_8tb/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_cmn/log/utt2num_frames.1 ark:- ark,scp:/raid0_8tb/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_cmn/xvector_cmvn_feats_frames_and_segments.1.ark,/raid0_8tb/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_cmn/xvector_cmvn_feats_frames_and_segments.1.scp 
+# Started at Mon Dec  9 13:29:04 PST 2019
+#
+copy-feats --compress=true --write-num-frames=ark,t:/raid0_8tb/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_cmn/log/utt2num_frames.1 ark:- ark,scp:/raid0_8tb/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_cmn/xvector_cmvn_feats_frames_and_segments.1.ark,/raid0_8tb/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_cmn/xvector_cmvn_feats_frames_and_segments.1.scp 
+apply-cmvn-sliding --norm-vars=false --center=true --cmn-window=300 scp:/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/frames_and_segments/split2/1/feats.scp ark:- 
+LOG (apply-cmvn-sliding[5.4.253~1-34df]:main():apply-cmvn-sliding.cc:75) Applied sliding-window cepstral mean normalization to 23 utterances, 0 had errors.
+LOG (copy-feats[5.4.253~1-34df]:main():copy-feats.cc:143) Copied 23 feature matrices.
+# Accounting: time=0 threads=1
+# Ended (code 0) at Mon Dec  9 13:29:04 PST 2019, elapsed time 0 seconds

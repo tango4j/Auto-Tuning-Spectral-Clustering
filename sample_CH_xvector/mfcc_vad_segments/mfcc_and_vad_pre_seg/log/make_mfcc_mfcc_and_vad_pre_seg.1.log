@@ -1,0 +1,31 @@
+# extract-segments scp,p:/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_and_vad_pre_seg/wav.scp /raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_and_vad_pre_seg/log/segments.1 ark:- | compute-mfcc-feats --verbose=2 --config=/staging/sn/mp_323/Dihard2/dihard2-is19/usc_diar_system/conf/mfcc8k_callhome_diarization_v2.conf ark:- ark:- | copy-feats --compress=true --write-num-frames=ark,t:/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_and_vad_pre_seg/log/utt2num_frames.1 ark:- ark,scp:/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_and_vad_pre_seg/data/raw_mfcc_mfcc_and_vad_pre_seg.1.ark,/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_and_vad_pre_seg/data/raw_mfcc_mfcc_and_vad_pre_seg.1.scp 
+# Started at Mon Dec  9 13:29:03 PST 2019
+#
+copy-feats --compress=true --write-num-frames=ark,t:/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_and_vad_pre_seg/log/utt2num_frames.1 ark:- ark,scp:/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_and_vad_pre_seg/data/raw_mfcc_mfcc_and_vad_pre_seg.1.ark,/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_and_vad_pre_seg/data/raw_mfcc_mfcc_and_vad_pre_seg.1.scp 
+extract-segments scp,p:/raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_and_vad_pre_seg/wav.scp /raid_fd/diar_working_dir/ns2ch_s_refSAD_xvecCH_w1.5_p0.75_m0.5/mfcc_vad_segments/mfcc_and_vad_pre_seg/log/segments.1 ark:- 
+compute-mfcc-feats --verbose=2 --config=/staging/sn/mp_323/Dihard2/dihard2-is19/usc_diar_system/conf/mfcc8k_callhome_diarization_v2.conf ark:- ark:- 
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-00000-00327
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-00339-00545
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-00551-00595
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-00614-00913
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-00924-01522
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-01564-01777
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-01799-01980
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-02016-02149
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-02207-02885
+LOG (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:172) Processed 10 utterances
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-02896-03030
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-03049-03253
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-03309-03664
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-03699-03746
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-03786-03833
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-03852-04444
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-04502-04856
+LOG (extract-segments[5.4.253~1-34df]:main():extract-segments.cc:193) Successfully processed 19 lines out of 19 in the segments file. 
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-04860-05192
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-05213-05318
+VLOG[2] (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:173) Processed features for key iaaa-05385-05657
+LOG (compute-mfcc-feats[5.4.253~1-34df]:main():compute-mfcc-feats.cc:176)  Done 19 out of 19 utterances.
+LOG (copy-feats[5.4.253~1-34df]:main():copy-feats.cc:143) Copied 19 feature matrices.
+# Accounting: time=0 threads=1
+# Ended (code 0) at Mon Dec  9 13:29:03 PST 2019, elapsed time 0 seconds
