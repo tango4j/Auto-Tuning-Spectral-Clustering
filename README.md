@@ -44,15 +44,13 @@ This command will create a folder named "env_nmesc".
 
 
 ### Usage Example
-#### How to run the spectral clustering code:
+#### Running the python code with arguments:
 ```bash
 python spectral_opt.py --distance_score_file $DISTANCE_SCORE_FILE \
                        --threshold $threshold \
                        --score-metric $score_metric \
                        --xvector_window $xvector_window \
-                       --asr_spk_turn_est_scp 'None' \
                        --max_speaker $max_speaker \
-                       --max_speaker_list 'None'\
                        --embedding_scp $embedding_scp \
                        --spt_est_thres $spt_est_thres \
                        --segment_file_input_path $SEGMENT_FILE_INPUT_PATH \
@@ -62,42 +60,42 @@ python spectral_opt.py --distance_score_file $DISTANCE_SCORE_FILE \
 #### Arguments:
 
 **distance_score_file**: A list of affinity matrix files.  
+```
+DISTANCE_SCORE_FILE=$PWD/sample_CH_xvector/cos_scores/scores.scp
+DISTANCE_SCORE_FILE=$PWD/sample_CH_xvector/cos_scores/scores.txt
+```
 Two options are available:
 (1) scores.scp: Kaldi style scp file that contains the absolute path to .ark files and its binary address. Space separted <utt_id> and <path>.
 
-Ex) 
+Ex)scores.scp
 ```
 iaaa /path/sample_CH_xvector/cos_scores/scores.1.ark:5
 iafq /path/sample_CH_xvector/cos_scores/scores.1.ark:23129
 <utt_id> <path>
 ```
+
 (2) scores.txt: List of <utt_id> and the absolute path to .npy files.
-Ex) 
+Ex) scores.txt
 ```
 iaaa /path/sample_CH_xvector/cos_scores/iaaa.npy
 iafq /path/sample_CH_xvector/cos_scores/iafq.npy
 <utt_id> <path>
 ```
 
-**threshold**:
+**threshold**: Manually setup a threshold. We apply this threshold for all utterances. 
+Ex)
 ```bash
-threshold
+threshold=0.05
 ```
 
-**score-metric**:
-score-metric $score_metric \
+**score-metric**: Use 'cos' to apply for affinity matrix based on cosine similarity.
 ```bash
-threshold
+score_metric='cos'
 ```
-**xvector_window**: 
-xvector_window $xvector_window \
+
+**max_speaker**: Default is 8. If you do not provide oracle number of speakers (reco2num_spk), the estimated number of speakers is capped by _max_speaker_.
 ```bash
-threshold
-```
-**max_speaker**:
-max_speaker $max_speaker \
-```bash
-threshold
+max_speaker=8
 ```
 **embedding_scp**:
 embedding_scp $embedding_scp \
