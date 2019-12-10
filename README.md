@@ -9,6 +9,14 @@ Python3 code for the IEEE SPL paper ["Auto-Tuning Spectral Clustering for Speake
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+### TLDR; Just give me the one-click demo file.
+
+* Run the following script.  
+* _run_demo_clustering.sh_ installs the virtualenv and runs spectral clustering example.
+
+```bash
+source run_demo_clustering.sh
+```
 ### Prerequisites
 
 * This repo is based on python 3.7.
@@ -33,14 +41,7 @@ If you installed virtualenv, run the "install_venv.sh" script to make a virtual-
 ```
 This command will create a folder named "env_nmesc".
 
-### TLDR; Just give me the one-click demo file.
 
-* Run the following script.  
-* _run_demo_clustering.sh_ installs the virtualenv and runs spectral clustering example.
-
-```bash
-source run_demo_clustering.sh
-```
 
 
 ## Authors
