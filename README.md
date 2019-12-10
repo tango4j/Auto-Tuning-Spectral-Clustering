@@ -1,7 +1,7 @@
 
 # Auto Tuning Spectral Clustering
 
-<img src="./pics/adj_mat.png" width="35%" height="35%">
+<img src="./pics/adj_mat.png" width="40%" height="40%">
 <img src="./pics/gp_vs_nme.png" width="40%" height="40%">  
 
 Python3 code for the IEEE SPL paper ["Auto-Tuning Spectral Clustering for SpeakerDiarization Using Normalized Maximum Eigengap"](https://drive.google.com/file/d/1CdEJPrpW6pRCObrppcZnw0_hRwWIHxi8/view?usp=sharing)
@@ -67,7 +67,7 @@ DISTANCE_SCORE_FILE=$PWD/sample_CH_xvector/cos_scores/scores.txt
 Two options are available:
 (1) scores.scp: Kaldi style scp file that contains the absolute path to .ark files and its binary address. Space separted <utt_id> and <path>.
 
-Ex)scores.scp
+ex) scores.scp
 ```
 iaaa /path/sample_CH_xvector/cos_scores/scores.1.ark:5
 iafq /path/sample_CH_xvector/cos_scores/scores.1.ark:23129
@@ -75,7 +75,7 @@ iafq /path/sample_CH_xvector/cos_scores/scores.1.ark:23129
 ```
 
 (2) scores.txt: List of <utt_id> and the absolute path to .npy files.
-Ex) scores.txt
+ex) scores.txt
 ```
 iaaa /path/sample_CH_xvector/cos_scores/iaaa.npy
 iafq /path/sample_CH_xvector/cos_scores/iafq.npy
@@ -83,17 +83,19 @@ iafq /path/sample_CH_xvector/cos_scores/iafq.npy
 ```
 
 **threshold**: Manually setup a threshold. We apply this threshold for all utterances. 
-Ex)
+ex) 
 ```bash
 threshold=0.05
 ```
 
 **score-metric**: Use 'cos' to apply for affinity matrix based on cosine similarity.
+ex) 
 ```bash
 score_metric='cos'
 ```
 
 **max_speaker**: Default is 8. If you do not provide oracle number of speakers (reco2num_spk), the estimated number of speakers is capped by _max_speaker_.
+ex) 
 ```bash
 max_speaker=8
 ```
@@ -106,22 +108,20 @@ threshold
 **spt_est_thres**:
 spt_est_thres $spt_est_thres \
 ```bash
-threshold
+spt_est_thres='None'
+spt_est_thres="thres_utts.txt"
 ```
+
 **segment_file_input_path**:
-segment_file_input_path $SEGMENT_FILE_INPUT_PATH \
 ```bash
 threshold
 ```
-**segment_file_input_path**:
-spk_labels_out_path $SPK_LABELS_OUT_PATH \
-```bash
-threshold
-```
-**reco2num_spk**
+
+**reco2num_spk**: A list of oracle number of speakers. Default is 'None'.
 reco2num_spk $reco2num_spk
 ```bash
-threshold
+reco2num_spk='None'
+reco2num_spk='oracle_num_of_spk.txt'
 ```
 
 
