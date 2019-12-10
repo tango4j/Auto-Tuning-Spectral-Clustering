@@ -64,7 +64,8 @@ python spectral_opt.py --distance_score_file $DISTANCE_SCORE_FILE \
 DISTANCE_SCORE_FILE=$PWD/sample_CH_xvector/cos_scores/scores.scp
 DISTANCE_SCORE_FILE=$PWD/sample_CH_xvector/cos_scores/scores.txt
 ```
-Two options are available:
+Two options are available:  
+
 (1) scores.scp: Kaldi style scp file that contains the absolute path to .ark files and its binary address. Space separted <utt_id> and <path>.
 
 ex) scores.scp
@@ -74,7 +75,7 @@ iafq /path/sample_CH_xvector/cos_scores/scores.1.ark:23129
 <utt_id> <path>
 ```
 
-(2) scores.txt: List of <utt_id> and the absolute path to .npy files.
+(2) scores.txt: List of <utt_id> and the absolute path to .npy files.  
 ex) scores.txt
 ```
 iaaa /path/sample_CH_xvector/cos_scores/iaaa.npy
@@ -82,19 +83,19 @@ iafq /path/sample_CH_xvector/cos_scores/iafq.npy
 <utt_id> <path>
 ```
 
-**threshold**: Manually setup a threshold. We apply this threshold for all utterances. 
+**threshold**: Manually setup a threshold. We apply this threshold for all utterances.  
 ex) 
 ```bash
 threshold=0.05
 ```
 
-**score-metric**: Use 'cos' to apply for affinity matrix based on cosine similarity.
+**score-metric**: Use 'cos' to apply for affinity matrix based on cosine similarity.  
 ex) 
 ```bash
 score_metric='cos'
 ```
 
-**max_speaker**: Default is 8. If you do not provide oracle number of speakers (reco2num_spk), the estimated number of speakers is capped by _max_speaker_.
+**max_speaker**: Default is 8. If you do not provide oracle number of speakers (reco2num_spk), the estimated number of speakers is capped by _max_speaker_.  
 ex) 
 ```bash
 max_speaker=8
