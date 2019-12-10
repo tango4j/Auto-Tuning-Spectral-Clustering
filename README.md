@@ -1,7 +1,7 @@
 
 # Auto Tuning Spectral Clustering
 
-![Adjacency Matrix](https://raw.githubusercontent.com/tango4j/Auto-Tuning-Spectral-Clustering/master/pics/adj_mat.png)
+![Adjacency Matrix](https://raw.githubusercontent.com/tango4j/Auto-Tuning-Spectral-Clustering/master/pics/adj_mat.png) <!-- .element height="50%" width="50%" -->
 ![Adjacency Matrix](https://raw.githubusercontent.com/tango4j/Auto-Tuning-Spectral-Clustering/master/pics/gp_vs_nme.png)
 
 
