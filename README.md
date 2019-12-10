@@ -1,17 +1,14 @@
 
 # Auto Tuning Spectral Clustering
 
-
+![Adjacency Matrix](https://raw.githubusercontent.com/tango4j/Auto-Tuning-Spectral-Clustering/pics/adj_mat.png)
+![Adjacency Matrix](https://raw.githubusercontent.com/tango4j/Auto-Tuning-Spectral-Clustering/pics/gp_vs_nme.png)
 
 
 Python3 code for the IEEE SPL paper ["Auto-Tuning Spectral Clustering for SpeakerDiarization Using Normalized Maximum Eigengap"](https://drive.google.com/file/d/1CdEJPrpW6pRCObrppcZnw0_hRwWIHxi8/view?usp=sharing)
 
 
 
-
-# Project Title
-
-One Paragraph of project description goes here
 
 ## Getting Started
 
