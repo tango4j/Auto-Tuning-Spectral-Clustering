@@ -23,6 +23,10 @@ kaldi_io==0.9.1
 ```
 Use _*install_venv.sh*_ to install the necessary python libraries
 
+You have to first have "virtualenv" installed on your machine.
+```
+sudo pip3 install virtualenv 
+```
 
 - install_venv.sh
 ```
