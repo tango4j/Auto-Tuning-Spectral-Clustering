@@ -8,8 +8,6 @@ Python3 code for the IEEE SPL paper ["Auto-Tuning Spectral Clustering for Speake
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### TLDR; One-click demo file.
 
 * _run_demo_clustering.sh_ installs a virtualenv and runs spectral a clustering example.
