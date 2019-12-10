@@ -55,7 +55,7 @@ python spectral_opt.py --distance_score_file $DISTANCE_SCORE_FILE \
                        --spt_est_thres $spt_est_thres \
                        --segment_file_input_path $SEGMENT_FILE_INPUT_PATH \
                        --spk_labels_out_path $SPK_LABELS_OUT_PATH \
-                       --reco2num_spk $reco2num_spk || exit 1
+                       --reco2num_spk $reco2num_spk 
 ```
 #### Arguments:
 
@@ -72,7 +72,7 @@ ex) scores.scp
 ```
 iaaa /path/sample_CH_xvector/cos_scores/scores.1.ark:5
 iafq /path/sample_CH_xvector/cos_scores/scores.1.ark:23129
-<utt_id> <path>
+...
 ```
 
 (2) scores.txt: List of <utt_id> and the absolute path to .npy files.  
@@ -80,7 +80,7 @@ ex) scores.txt
 ```
 iaaa /path/sample_CH_xvector/cos_scores/iaaa.npy
 iafq /path/sample_CH_xvector/cos_scores/iafq.npy
-<utt_id> <path>
+...
 ```
 
 **threshold**: Manually setup a threshold. We apply this threshold for all utterances.  
