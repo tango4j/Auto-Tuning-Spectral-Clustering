@@ -37,7 +37,7 @@ sudo pip3 install virtualenv
 ```
 If you installed virtualenv, run the "install_venv.sh" script to make a virtual-env.
 ```
-./install_venv.sh
+source install_venv.sh
 ```
 This command will create a folder named "env_nmesc".
 
