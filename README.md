@@ -43,6 +43,73 @@ source install_venv.sh
 This command will create a folder named "env_nmesc".
 
 
+### Usage Example
+
+distance_score_file: A list of affinity matrix files.  
+Two options are available:
+(1) scores.scp: Kaldi style scp file that contains the absolute path to .ark files and its binary address. Space separted <utt_id> and <path>.
+
+Ex) 
+```
+iaaa /path/sample_CH_xvector/cos_scores/scores.1.ark:5
+iafq /path/sample_CH_xvector/cos_scores/scores.1.ark:23129
+<utt_id> <path>
+```
+(2) scores.txt: List of <utt_id> and the absolute path to .npy files.
+Ex) 
+```
+iaaa /path/sample_CH_xvector/cos_scores/iaaa.npy
+iafq /path/sample_CH_xvector/cos_scores/iafq.npy
+<utt_id> <path>
+
+
+```bash
+DISTANCE_SCORE_FILE
+```
+threshold $threshold \
+```bash
+threshold
+```
+score-metric $score_metric \
+```bash
+threshold
+```
+xvector_window $xvector_window \
+```bash
+threshold
+```
+asr_spk_turn_est_scp 'None' \
+```bash
+threshold
+```
+max_speaker $max_speaker \
+```bash
+threshold
+```
+max_speaker_list 'None'\
+```bash
+threshold
+```
+embedding_scp $embedding_scp \
+```bash
+threshold
+```
+spt_est_thres $spt_est_thres \
+```bash
+threshold
+```
+segment_file_input_path $SEGMENT_FILE_INPUT_PATH \
+```bash
+threshold
+```
+spk_labels_out_path $SPK_LABELS_OUT_PATH \
+```bash
+threshold
+```
+reco2num_spk $reco2num_spk
+```bash
+threshold
+```
 ```bash
 python spectral_opt.py --distance_score_file $DISTANCE_SCORE_FILE \
                        --threshold $threshold \
