@@ -4,8 +4,9 @@
 <img src="./pics/adj_mat.png" width="40%" height="40%">
 <img src="./pics/gp_vs_nme.png" width="40%" height="40%">  
 
-* Python3 code for the IEEE SPL paper ["Auto-Tuning Spectral Clustering for SpeakerDiarization Using Normalized Maximum Eigengap"](https://drive.google.com/file/d/1CdEJPrpW6pRCObrppcZnw0_hRwWIHxi8/view?usp=sharing)
-* Based on Kaldi binaries, python and bash script. 
+* Code for the IEEE SPL paper ["Auto-Tuning Spectral Clustering for SpeakerDiarization Using Normalized Maximum Eigengap"](https://drive.google.com/file/d/1CdEJPrpW6pRCObrppcZnw0_hRwWIHxi8/view?usp=sharing)
+* Spectral Clustering with auto tuning approach for speaker diarization
+* Based on Kaldi binaries, python and bash script 
 
 ## Getting Started
 
