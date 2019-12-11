@@ -110,7 +110,7 @@ ex)
 score_metric='cos'
 ```
 
-* **max_speaker**: Default is 8. If you do not provide oracle number of speakers (reco2num_spk), the estimated number of speakers is capped by _max_speaker_.  
+* **max_speaker**: If you do not provide oracle number of speakers (reco2num_spk), the estimated number of speakers is capped by _max_speaker_. Default is 8.
 ```bash
 max_speaker=8
 ```
@@ -122,9 +122,19 @@ spt_est_thres='None'
 spt_est_thres="thres_utts.txt"
 ```
 
-* **segment_file_input_path**:
+* **segment_file_input_path**: "segments" file in Kaldi format. This file is also necessary for making rttm file and calculating DER.
 ```bash
-threshold
+segment_file_input_path=$PWD/sample_CH_xvector/xvector_embeddings/segments
+```
+Ex) segments
+```
+iaaa-00000-00327-00000000-00000150 iaaa 0 1.5
+iaaa-00000-00327-00000075-00000225 iaaa 0.75 2.25
+iaaa-00000-00327-00000150-00000300 iaaa 1.5 3
+...
+iafq-00000-00272-00000000-00000150 iafq 0 1.5
+iafq-00000-00272-00000075-00000225 iafq 0.75 2.25
+iafq-00000-00272-00000150-00000272 iafq 1.5 2.72
 ```
 
 * **reco2num_spk**: A list of oracle number of speakers. Default is 'None'.
@@ -142,7 +152,4 @@ iabe 4
 iadf 6
 ...
 ```
-
-## Authors
-
 
