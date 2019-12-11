@@ -182,8 +182,8 @@ iadf 6
 
 ```bash
 $ ./run_demo_clustering.sh 
-=== [INFO] The python_envfolder exists: /sam/home/inctrl/Dropbox/personal_prj/Auto-Tuning-Spectral-Clustering/env_nmesc 
-=== [INFO] Cosine similariy scores exist: /sam/home/inctrl/Dropbox/personal_prj/Auto-Tuning-Spectral-Clustering/sample_CH_xvector/cos_scores 
+=== [INFO] The python_envfolder exists: /.../Auto-Tuning-Spectral-Clustering/env_nmesc 
+=== [INFO] Cosine similariy scores exist: /.../Auto-Tuning-Spectral-Clustering/sample_CH_xvector/cos_scores 
 === [INFO] Running Spectral Clustering with .npy input... 
 === [INFO] .txt file and .npy files were provided
 Scanning eig_ratio of length [19] mat size [76] ...
