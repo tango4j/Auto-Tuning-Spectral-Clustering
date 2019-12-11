@@ -1,2 +1,2 @@
-iaaa
-iafq
+iaaa sample_CH_xvector/cos_scores/iaaa.npy
+iafq sample_CH_xvector/cos_scores/iafq.npy

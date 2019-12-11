@@ -57,11 +57,9 @@ fi
 
 score_metric='cos'
 max_speaker=8
-xvector_window=1.5
 spt_est_thres="NMESC"
 threshold='None'
 reco2num_spk="None"
-embedding_scp=$data_dir/xvector_embeddings/xvector.scp
 
 SEGMENT_FILE_INPUT_PATH=$data_dir/xvector_embeddings/segments
 SPK_LABELS_OUT_PATH=$data_dir/evaluation_output/labels
@@ -73,11 +71,7 @@ text_yellow_info "Running Spectral Clustering with .npy input..."
 python spectral_opt.py --distance_score_file $DISTANCE_SCORE_FILE \
                        --threshold $threshold \
                        --score-metric $score_metric \
-                       --xvector_window $xvector_window \
-                       --asr_spk_turn_est_scp 'None' \
                        --max_speaker $max_speaker \
-                       --max_speaker_list 'None'\
-                       --embedding_scp $embedding_scp \
                        --spt_est_thres $spt_est_thres \
                        --segment_file_input_path $SEGMENT_FILE_INPUT_PATH \
                        --spk_labels_out_path $SPK_LABELS_OUT_PATH \
@@ -89,11 +83,7 @@ text_yellow_info "Running Spectral Clustering with .npy input..."
 python spectral_opt.py --distance_score_file $DISTANCE_SCORE_FILE \
                        --threshold $threshold \
                        --score-metric $score_metric \
-                       --xvector_window $xvector_window \
-                       --asr_spk_turn_est_scp 'None' \
                        --max_speaker $max_speaker \
-                       --max_speaker_list 'None'\
-                       --embedding_scp $embedding_scp \
                        --spt_est_thres $spt_est_thres \
                        --segment_file_input_path $SEGMENT_FILE_INPUT_PATH \
                        --spk_labels_out_path $SPK_LABELS_OUT_PATH \

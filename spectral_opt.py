@@ -1,10 +1,11 @@
 
 from __future__ import division
 import sys
-sys.path.append("../")
+# sys.path.append("../")
 sys.path.append("./sc_utils")
 
 import argparse
+import os
 import copy
 
 import numpy as np
@@ -319,7 +320,8 @@ def checkOutput(key, seg_list, Yk):
         raise ValueError("Mismatch of lengths")
         return None 
 
-def getSegmentDict(param):
+
+def getSegmentDict_kaldi(param):
     seg_dict, segments_total_dict = {}, {}
 
     line_generator_segment = open(param.segment_file_input_path)
@@ -359,20 +361,29 @@ class GraphSpectralClusteringClass(object):
 
         if self.param.asr_spk_turn_est_scp != 'None':
             self.lex_range_dict = read_turn_est_v0(self.param)
+    
+        self.seg_dict, self.segments_total_dict = getSegmentDict_kaldi(self.param)
 
         self.labels_out_list = []
-        self.seg_dict, self.segments_total_dict = getSegmentDict(self.param)
-
         self.est_num_spks_out_list = []
         self.lambdas_list = []
 
         self.use_gc_thres=False
+
    
     def npy_to_generator(self):
-        base_path = self.param.distance_score_file.replace('scores.txt', '')
+        base_path = '/'.join(self.param.distance_score_file.split('/')[:-1])
         cont = modules.read_txt(param.distance_score_file)
-        for key in cont:
-            mat = np.load(base_path+'/'+ key +'.npy')
+        for line in cont:
+            key, npy_path = line.split()
+            if os.path.exists(npy_path):
+                mat = np.load(npy_path)
+            else:
+                try:
+                    abs_path = os.getcwd()+'/'+npy_path
+                    mat = np.load(abs_path)
+                except:
+                    raise ValueError('No such file in {}'.format(abs_path))
             yield key, mat
         
 
@@ -404,7 +415,6 @@ class GraphSpectralClusteringClass(object):
             else:
                 raise ValueError('self.param.score_metric contains invalid score metric:', self.param.score_metric)
            
-            # print("score metric: ", self.param.score_metric)
             Yk = Y + 1 # Index shift for kaldi index
             self.seg_list = self.seg_dict[key]
             checkOutput(key, self.seg_list, Yk)
@@ -487,7 +497,7 @@ class GraphSpectralClusteringClass(object):
             p_neighbors = int(mat.shape[0] * param.threshold)
             X_conn_from_dist = get_X_conn_from_dist(mat, p_neighbors)
         
-        else:
+        elif param.threshold != 'None':
             ### If score metric is not PLDA, threshold is used for similarity ranking pruning.
             p_neighbors = int(mat.shape[0] * param.threshold)
             X_r = get_kneighbors_conn(X_dist_raw, p_neighbors) 
@@ -580,7 +590,7 @@ parser.add_argument('--score-metric', action='store', type=str, default='cos')
 parser.add_argument('--max_speaker', action='store', type=int, default=8)
 parser.add_argument('--xvector_window', action='store', type=float, default=1.5)
 parser.add_argument('--spt_est_thres', action='store', type=str)
-parser.add_argument('--max_speaker_list', action='store', type=str)
+parser.add_argument('--max_speaker_list', action='store', type=str, default='None')
 parser.add_argument('--sparse_search', action='store', type=str, default=True)
 
 param = parser.parse_args()
