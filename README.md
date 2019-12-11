@@ -176,7 +176,29 @@ iadf 6
 ...
 ```
 
-### Expected output result
+### Cosine similarity calculator script
+
+#### Running the python code for cosine similarity calculation:
+```
+data_dir=$PWD/sample_CH_xvector
+pushd $PWD/sc_utils
+text_yellow_info "Starting Script: affinity_score.py"
+./score_embedding.sh --cmd "run.pl --mem 5G" \
+                     --score-metric $score_metric \
+                      $data_dir/xvector_embeddings \
+                      $data_dir/cos_scores 
+popd
+```
+* **cmd**: This is for following the kaldi style argument.
+* **score-metric**: Should be 'cos' for cosine similarity.
+```
+score_metric='cos'
+```
+* **\<src-embedding-dir\>**: Source embedding directory where xvector.scp and xvector.ark files are
+* **\<out-dir\>**: Output directory. This script will create scores.1.ark file and scores.scp
+
+
+### Expected output result of one-click script
 
 ```bash
 $ ./run_demo_clustering.sh 
