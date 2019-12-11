@@ -10,8 +10,8 @@ Python3 code for the IEEE SPL paper ["Auto-Tuning Spectral Clustering for Speake
 
 ### TLDR; One-click demo file.
 
-* _run_demo_clustering.sh_ installs a virtualenv and runs spectral a clustering example.
 * [**virtualenv**](https://docs.python-guide.org/dev/virtualenvs/) should be installed on your machine.
+* _run_demo_clustering.sh_ installs a virtualenv and runs spectral a clustering example.
 
 ```bash
 source run_demo_clustering.sh
