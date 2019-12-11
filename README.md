@@ -88,7 +88,7 @@ DISTANCE_SCORE_FILE=$PWD/sample_CH_xvector/cos_scores/scores.txt
 ```
 Two options are available:  
 
-(1) scores.scp: Kaldi style scp file that contains the absolute path to .ark files and its binary address. Space separted <utt_id> and <path>.
+(1) scores.scp: Kaldi style scp file that contains the absolute path to .ark files and its binary address. Space separted \<utt_id\> and \<path\>.
 
 ex) scores.scp
 ```
