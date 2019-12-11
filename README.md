@@ -77,30 +77,7 @@ python spectral_opt.py --distance_score_file $DISTANCE_SCORE_FILE \
                        --spk_labels_out_path $SPK_LABELS_OUT_PATH \
                        --reco2num_spk $reco2num_spk 
 ```
-**Expected output result**
 
-```bash
-$ ./run_demo_clustering.sh 
-=== [INFO] The python_envfolder exists: /sam/home/inctrl/Dropbox/personal_prj/Auto-Tuning-Spectral-Clustering/env_nmesc 
-=== [INFO] Cosine similariy scores exist: /sam/home/inctrl/Dropbox/personal_prj/Auto-Tuning-Spectral-Clustering/sample_CH_xvector/cos_scores 
-=== [INFO] Running Spectral Clustering with .npy input... 
-=== [INFO] .txt file and .npy files were provided
-Scanning eig_ratio of length [19] mat size [76] ...
-1  score_metric: cos  affinity matrix pruning - threshold: 0.105  key: iaaa Est # spk: 2  Max # spk: 8  MAT size :  (76, 76)
-Scanning eig_ratio of length [15] mat size [62] ...
-2  score_metric: cos  affinity matrix pruning - threshold: 0.194  key: iafq Est # spk: 2  Max # spk: 8  MAT size :  (62, 62)
-Method: Spectral Clustering has been finished 
-=== [INFO] Running Spectral Clustering with .npy input... 
-=== [INFO] .scp file and .ark files were provided
-Scanning eig_ratio of length [19] mat size [76] ...
-1  score_metric: cos  affinity matrix pruning - threshold: 0.105  key: iaaa Est # spk: 2  Max # spk: 8  MAT size :  (76, 76)
-Scanning eig_ratio of length [15] mat size [62] ...
-2  score_metric: cos  affinity matrix pruning - threshold: 0.194  key: iafq Est # spk: 2  Max # spk: 8  MAT size :  (62, 62)
-Method: Spectral Clustering has been finished 
-=== [INFO] Computing RTTM 
-=== [INFO] RTTM calculation was successful. 
-=== [INFO] =={ Total Error (DER) - [ 0.32 % ] Speaker Error - [ 0.32 % ] }== 
-```
 
 #### Arguments:
 
@@ -200,6 +177,32 @@ iabe 4
 iadf 6
 ...
 ```
+
+### Expected output resul
+
+```bash
+$ ./run_demo_clustering.sh 
+=== [INFO] The python_envfolder exists: /sam/home/inctrl/Dropbox/personal_prj/Auto-Tuning-Spectral-Clustering/env_nmesc 
+=== [INFO] Cosine similariy scores exist: /sam/home/inctrl/Dropbox/personal_prj/Auto-Tuning-Spectral-Clustering/sample_CH_xvector/cos_scores 
+=== [INFO] Running Spectral Clustering with .npy input... 
+=== [INFO] .txt file and .npy files were provided
+Scanning eig_ratio of length [19] mat size [76] ...
+1  score_metric: cos  affinity matrix pruning - threshold: 0.105  key: iaaa Est # spk: 2  Max # spk: 8  MAT size :  (76, 76)
+Scanning eig_ratio of length [15] mat size [62] ...
+2  score_metric: cos  affinity matrix pruning - threshold: 0.194  key: iafq Est # spk: 2  Max # spk: 8  MAT size :  (62, 62)
+Method: Spectral Clustering has been finished 
+=== [INFO] Running Spectral Clustering with .npy input... 
+=== [INFO] .scp file and .ark files were provided
+Scanning eig_ratio of length [19] mat size [76] ...
+1  score_metric: cos  affinity matrix pruning - threshold: 0.105  key: iaaa Est # spk: 2  Max # spk: 8  MAT size :  (76, 76)
+Scanning eig_ratio of length [15] mat size [62] ...
+2  score_metric: cos  affinity matrix pruning - threshold: 0.194  key: iafq Est # spk: 2  Max # spk: 8  MAT size :  (62, 62)
+Method: Spectral Clustering has been finished 
+=== [INFO] Computing RTTM 
+=== [INFO] RTTM calculation was successful. 
+=== [INFO] =={ Total Error (DER) - [ 0.32 % ] Speaker Error - [ 0.32 % ] }== 
+```
+
 ## Authors
 
 Tae Jin Park: taejinpa@usc.edu, tango4j@gmail.com 
