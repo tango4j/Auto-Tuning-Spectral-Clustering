@@ -78,10 +78,9 @@ python spectral_opt.py --distance_score_file $DISTANCE_SCORE_FILE \
                        --reco2num_spk $reco2num_spk 
 ```
 
-
 #### Arguments:
 
-**distance_score_file**: A list of affinity matrix files.  
+* **distance_score_file**: A list of affinity matrix files.  
 ```
 DISTANCE_SCORE_FILE=$PWD/sample_CH_xvector/cos_scores/scores.scp
 DISTANCE_SCORE_FILE=$PWD/sample_CH_xvector/cos_scores/scores.txt
@@ -104,8 +103,6 @@ iaaa /path/sample_CH_xvector/cos_scores/iaaa.npy
 iafq /path/sample_CH_xvector/cos_scores/iafq.npy
 ...
 ```
-
-
 * **score-metric**: Use 'cos' to apply for affinity matrix based on cosine similarity.  
 ex) 
 ```bash
@@ -178,7 +175,7 @@ iadf 6
 ...
 ```
 
-### Expected output resul
+### Expected output result
 
 ```bash
 $ ./run_demo_clustering.sh 
