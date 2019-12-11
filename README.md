@@ -42,6 +42,23 @@ This command will create a folder named "env_nmesc".
 
 
 ### Usage Example
+
+You need to prepare the followings:
+
+1. Segmentation file: Kaldi style segment file
+Ex) segments
+```
+iaaa-00000-00327-00000000-00000150 iaaa 0 1.5
+iaaa-00000-00327-00000075-00000225 iaaa 0.75 2.25
+iaaa-00000-00327-00000150-00000300 iaaa 1.5 3
+...
+iafq-00000-00272-00000000-00000150 iafq 0 1.5
+iafq-00000-00272-00000075-00000225 iafq 0.75 2.25
+iafq-00000-00272-00000150-00000272 iafq 1.5 2.72
+```
+3. Affinity matrix file in Kaldi scp/ark: Each affinity matrix file should be N by N square matrix.
+2. Speaker embedding file (optional): If you don't have affinity matrix, you can calculate cosine similarity ark files using _./sc_utils/score_embedding.sh_ 
+
 #### Running the python code with arguments:
 ```bash
 python spectral_opt.py --distance_score_file $DISTANCE_SCORE_FILE \
@@ -94,7 +111,6 @@ score_metric='cos'
 ```
 
 * **max_speaker**: Default is 8. If you do not provide oracle number of speakers (reco2num_spk), the estimated number of speakers is capped by _max_speaker_.  
-ex) 
 ```bash
 max_speaker=8
 ```
@@ -117,8 +133,8 @@ reco2num_spk $reco2num_spk
 reco2num_spk='None'
 reco2num_spk='oracle_num_of_spk.txt'
 ```
-
-oracle_num_of_spk.txt
+In the text file, you must include <utt_id> and <oracle_number_of_speakers>
+ex) oracle_num_of_spk.txt
 ```
 iaaa 2
 iafq 2
