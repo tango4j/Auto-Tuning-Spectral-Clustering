@@ -83,7 +83,10 @@ python spectral_opt.py --distance_score_file $DISTANCE_SCORE_FILE \
 
 * **distance_score_file**: A list of affinity matrix files.  
 ```
+# If you want to use kaldi .ark score file as an affinity matrix
 DISTANCE_SCORE_FILE=$PWD/sample_CH_xvector/cos_scores/scores.scp
+
+# If you want to use .npy numpy file as an affinity matrix
 DISTANCE_SCORE_FILE=$PWD/sample_CH_xvector/cos_scores/scores.txt
 ```
 Two options are available:  
