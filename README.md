@@ -23,7 +23,10 @@ source run_demo_clustering.sh
 * This repo is based on python 3.7.
 * The mainly required python3 libraries:
 ```
+joblib==0.14.0
+numpy==1.17.4
 scikit-learn==0.22
+scipy==1.3.3
 kaldi_io==0.9.1
 ```
 * [Kaldi](https://kaldi-asr.org/doc/about.html) is required to reproduce the numbers in the paper. Go to [Kaldi install](http://jrmeyer.github.io/asr/2016/01/26/Installing-Kaldi.html) to install Kaldi software.
