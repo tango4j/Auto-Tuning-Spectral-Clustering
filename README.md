@@ -14,7 +14,7 @@
 
 * [**virtualenv**](https://docs.python-guide.org/dev/virtualenvs/) should be installed on your machine.
 * _run_demo_clustering.sh_ installs a virtualenv and runs spectral a clustering example.
-* This script runs two utterances from [CALLHOME](https://catalog.ldc.upenn.edu/LDC2001S97) dataset wiht precomputed segment files and affinity matrices in ./sample_CH_xvector folder.
+* This script runs two utterances from [CALLHOME](https://catalog.ldc.upenn.edu/LDC2001S97) dataset with precomputed segment files and affinity matrices in ./sample_CH_xvector folder.
 
 ```bash
 source run_demo_clustering.sh
