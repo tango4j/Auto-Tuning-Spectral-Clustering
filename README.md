@@ -204,16 +204,9 @@ score_metric='cos'
 ### Expected output result of one-click script
 
 ```bash
-$ ./run_demo_clustering.sh   
-=== [INFO] The python_envfolder exists: /.../Auto-Tuning-Spectral-Clustering/env_nmesc 
-=== [INFO] Cosine similariy scores exist: /.../Auto-Tuning-Spectral-Clustering/sample_CH_xvector/cos_scores 
-=== [INFO] Running Spectral Clustering with .npy input... 
-=== [INFO] .txt file and .npy files were provided
-Scanning eig_ratio of length [19] mat size [76] ...
-1  score_metric: cos  affinity matrix pruning - threshold: 0.105  key: iaaa Est # spk: 2  Max # spk: 8  MAT size :  (76, 76)
-Scanning eig_ratio of length [15] mat size [62] ...
-2  score_metric: cos  affinity matrix pruning - threshold: 0.194  key: iafq Est # spk: 2  Max # spk: 8  MAT size :  (62, 62)
-Method: Spectral Clustering has been finished 
+$ source run_demo_clustering.sh 
+=== [INFO] The python_envfolder exists: /sam/home/inctrl/Dropbox/personal_prj/Auto-Tuning-Spectral-Clustering/env_nmesc 
+=== [INFO] Cosine similariy scores exist: /sam/home/inctrl/Dropbox/personal_prj/Auto-Tuning-Spectral-Clustering/sample_CH_xvector/cos_scores 
 === [INFO] Running Spectral Clustering with .npy input... 
 === [INFO] .scp file and .ark files were provided
 Scanning eig_ratio of length [19] mat size [76] ...
@@ -223,7 +216,23 @@ Scanning eig_ratio of length [15] mat size [62] ...
 Method: Spectral Clustering has been finished 
 === [INFO] Computing RTTM 
 === [INFO] RTTM calculation was successful. 
-=== [INFO] =={ Total Error (DER) - [ 0.32 % ] Speaker Error - [ 0.32 % ] }== 
+=== [INFO] NMESC auto-tuning | Total Err. (DER) -[ 0.32 % ] Speaker Err. [ 0.32 % ] 
+=== [INFO] .scp file and .ark files were provided
+1  score_metric: cos  affinity matrix pruning - threshold: 0.050  key: iaaa Est # spk: 2  Max # spk: 8  MAT size :  (76, 76)
+2  score_metric: cos  affinity matrix pruning - threshold: 0.050  key: iafq Est # spk: 5  Max # spk: 8  MAT size :  (62, 62)
+Method: Spectral Clustering has been finished 
+=== [INFO] Computing RTTM 
+=== [INFO] RTTM calculation was successful. 
+=== [INFO] Threshold 0.05 | Total Err. (DER) -[ 20.57 % ] Speaker Err. [ 20.57 % ] 
+Loading reco2num_spk file:  reco2num_spk
+=== [INFO] .scp file and .ark files were provided
+1  score_metric: cos  Rank based pruning - RP threshold: 0.0500  key: iaaa  Given Number of Speakers (reco2num_spk): 2  MAT size :  (76, 76)
+2  score_metric: cos  Rank based pruning - RP threshold: 0.0500  key: iafq  Given Number of Speakers (reco2num_spk): 2  MAT size :  (62, 62)
+Method: Spectral Clustering has been finished 
+=== [INFO] Computing RTTM 
+=== [INFO] RTTM calculation was successful. 
+=== [INFO] Known Num. Spk. | Total Err. (DER) -[ 0.15 % ] Speaker Err. [ 0.15 % ] 
+
 ```
 
 ## Authors
