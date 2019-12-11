@@ -1,11 +1,11 @@
 
-# Auto Tuning Spectral Clustering
+# Auto Tuning Spectral Clustering for SpeakerDiarization Using Normalized Maximum Eigengap
 
 <img src="./pics/adj_mat.png" width="40%" height="40%">
 <img src="./pics/gp_vs_nme.png" width="40%" height="40%">  
 
-* Code for the IEEE SPL paper ["Auto-Tuning Spectral Clustering for SpeakerDiarization Using Normalized Maximum Eigengap"](https://drive.google.com/file/d/1CdEJPrpW6pRCObrppcZnw0_hRwWIHxi8/view?usp=sharing)
-* Spectral Clustering with auto tuning approach for speaker diarization
+* Code for the IEEE Signal Processing Letters (SPL) paper ["Auto-Tuning Spectral Clustering for SpeakerDiarization Using Normalized Maximum Eigengap"](https://drive.google.com/file/d/1CdEJPrpW6pRCObrppcZnw0_hRwWIHxi8/view?usp=sharing)
+* Spectral Clustering with auto tuning approach for speaker diarization tasks.
 * Based on Kaldi binaries, python and bash script 
 
 ## Getting Started
@@ -175,4 +175,9 @@ iabe 4
 iadf 6
 ...
 ```
+## Authors
 
+Tae Jin Park: taejinpa@usc.edu, tango4j@gmail.com 
+Kyu J. 
+Manoj Kumar 
+Shrikanth Narayanan
