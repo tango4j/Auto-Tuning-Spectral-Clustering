@@ -201,7 +201,7 @@ score_metric='cos'
 ### Expected output result of one-click script
 
 ```bash
-$ ./run_demo_clustering.sh 
+$ ./run_demo_clustering.sh   
 === [INFO] The python_envfolder exists: /.../Auto-Tuning-Spectral-Clustering/env_nmesc 
 === [INFO] Cosine similariy scores exist: /.../Auto-Tuning-Spectral-Clustering/sample_CH_xvector/cos_scores 
 === [INFO] Running Spectral Clustering with .npy input... 
@@ -225,7 +225,7 @@ Method: Spectral Clustering has been finished
 
 ## Authors
 
-Tae Jin Park: taejinpa@usc.edu, tango4j@gmail.com 
-Kyu J. 
-Manoj Kumar 
-Shrikanth Narayanan
+Tae Jin Park: taejinpa@usc.edu, tango4j@gmail.com  
+Kyu J.  
+Manoj Kumar   
+Shrikanth Narayanan   
