@@ -50,8 +50,7 @@ This command will create a folder named "env_nmesc".
 
 You need to prepare the followings:
 
-1. Segmentation file: Kaldi style segment file
-Format:  
+1. **Segmentation files** in Kaldi style format:  
 <segment_id> <utt_id> <start_time> <end_time>
 
 ex) segments
@@ -64,8 +63,8 @@ iafq-00000-00272-00000000-00000150 iafq 0 1.5
 iafq-00000-00272-00000075-00000225 iafq 0.75 2.25
 iafq-00000-00272-00000150-00000272 iafq 1.5 2.72
 ```
-3. Affinity matrix file in Kaldi scp/ark: Each affinity matrix file should be N by N square matrix.
-2. Speaker embedding file (optional): If you don't have affinity matrix, you can calculate cosine similarity ark files using _./sc_utils/score_embedding.sh_ 
+3. **Affinity matrix files** in Kaldi scp/ark format: Each affinity matrix file should be N by N square matrix.
+2. **Speaker embedding files** (optional): If you don't have affinity matrix, you can calculate cosine similarity ark files using _./sc_utils/score_embedding.sh_ 
 
 #### Running the python code with arguments:
 ```bash
