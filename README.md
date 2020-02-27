@@ -8,6 +8,28 @@
 * Spectral Clustering with auto tuning approach for speaker diarization tasks.
 * Based on Kaldi binaries, python and bash script 
 
+## Performance Table
+
+#### Track 1: Oracle VAD  
+
+| System | DER,Speaker Error: Before Reseg | DER,Speaker Error: After Reseg |   |
+| -------------------------------------------------------------|:------:|:------:|
+| Callhome Diarization Xvector Model                           | 8.39%  | -      |
+| __Spectral Clustering COS+B-SC__                             | 7.29%  | -      |  
+| __[Proposed] Auto-Tuning NMESC COS+NME-SC__                  | 7.29%  | -      |  
+| __[Proposed] Auto-Tuning NMESC COS+NMME-SC Spare Search__    | 7.24%  | -      |   
+
+#### Track 2: System VAD  
+
+| System and Error | Total Error: Before Reseg | Total Error: After Reseg  | Speaker Error: Before Reseg | Speaker Error: After Reseg|
+| ------------------------------------------------------------|:------:|:------:|:--------:|:-----:|
+| JHU, 2017, Garcia-Romero [1] (t1, Oracle SAD)               |        | -      | 12.8 %   | 9.9%  |
+| Google, 2018, Quan Wang, d-vector + Spectral Clustering [3] | 18.8%  | -      | 12.0%    | -     |
+| Google, 2019, Fully Supervised [4]                          | -      | -      | 7.6%     | -     |
+| __Auto-Tuning NMESC [A1]__                                  | 11.73% |   -    | 5.41%    | -     |   
+
+
+
 ## Getting Started
 
 ### TLDR; One-click demo script
