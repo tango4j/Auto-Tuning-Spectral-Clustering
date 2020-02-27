@@ -258,7 +258,7 @@ Method: Spectral Clustering has been finished
 
 ## Authors
 
-Tae Jin Park: taejinpa@usc.edu, tango4j@gmail.com  
+Tae Jin Park: inctrljinee@gmail.com, tango4j@gmail.com  
 Kyu J.  
 Manoj Kumar   
 Shrikanth Narayanan   
