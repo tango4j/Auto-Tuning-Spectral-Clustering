@@ -10,23 +10,23 @@
 
 ## Performance Table
 
-#### Track 1: Oracle VAD  
+### Track 1: Oracle VAD  
 
-| System | DER,Speaker Error: Before Reseg | DER,Speaker Error: After Reseg |   |
-| -------------------------------------------------------------|:------:|:------:|
-| Callhome Diarization Xvector Model                           | 8.39%  | -      |
-| __Spectral Clustering COS+B-SC__                             | 7.29%  | -      |  
-| __[Proposed] Auto-Tuning NMESC COS+NME-SC__                  | 7.29%  | -      |  
-| __[Proposed] Auto-Tuning NMESC COS+NMME-SC Spare Search__    | 7.24%  | -      |   
+| System | CALLHOME | CHAES-eval | CH109 | RT03 | 
+| ----------------------------------------------|:------:|:------:|:------:|:------:| 
+| Callhome Diarization Xvector Model            | 8.39%  | 24.27% | 9.72% | 1.73% |
+| Spectral Clustering COS+B-SC                  | 7.29%  | 4.4%  | 2.25% | 2.63%  |   
+| __Auto-Tuning COS+NME-SC__                    | 7.29%  | 2.48% | 2.63% | 2.21% |
+| __Auto-Tuning COS+NMME-SC Sparse-Search-20__ | 7.24%  | 2.48% | 2.64% | 2.23% |
 
 #### Track 2: System VAD  
 
-| System and Error | Total Error: Before Reseg | Total Error: After Reseg  | Speaker Error: Before Reseg | Speaker Error: After Reseg|
-| ------------------------------------------------------------|:------:|:------:|:--------:|:-----:|
-| JHU, 2017, Garcia-Romero [1] (t1, Oracle SAD)               |        | -      | 12.8 %   | 9.9%  |
-| Google, 2018, Quan Wang, d-vector + Spectral Clustering [3] | 18.8%  | -      | 12.0%    | -     |
-| Google, 2019, Fully Supervised [4]                          | -      | -      | 7.6%     | -     |
-| __Auto-Tuning NMESC [A1]__                                  | 11.73% |   -    | 5.41%    | -     |   
+| System | CALLHOME | CHAES-eval | CH109 | RT03 | 
+| ----------------------------------------------|:------:|:------:|:------:|:------:| 
+| Callhome Diarization Xvector Model            | 8.39%  | 24.27% | 9.72% | 1.73% |
+| Spectral Clustering COS+B-SC                  | 7.29%  | 4.4%  | 2.25% | 2.63%  |   
+| __Auto-Tuning COS+NME-SC__                    | 7.29%  | 2.48% | 2.63% | 2.21% |
+| __Auto-Tuning COS+NMME-SC Sparse-Search-20__  | 7.24%  | 2.48% | 2.64% | 2.23% |
 
 
 
