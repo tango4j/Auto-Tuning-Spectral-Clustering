@@ -27,6 +27,8 @@ Auto-tuning NME-SC poposed method -
 
 ### Track 1: Oracle VAD  
 
+* SAD is not applied and the oracle speaker segments are extracted from ground truth to factor out SAD performance.
+
 | System | CALLHOME | CHAES-eval | CH109 | RT03(SW) | 
 | ----------------------------------------------|:---------:|:------:|:--------:|:--------:| 
 | Callhome Diarization Xvector Model[1]         | 8.39%     | 24.27% |  9.72% | 1.73% |
