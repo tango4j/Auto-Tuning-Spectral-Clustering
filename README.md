@@ -18,8 +18,8 @@ Auto-tuning NME-SC poposed method -
 
 ## Performance Table  
 
-* All the results are based on X-vector speaker embedding from [1](https://kaldi-asr.org/models/m6)  
-* Cosine distance (COS) is used for distance measure. [2](https://github.com/tango4j/Auto-Tuning-Spectral-Clustering/blob/master/2019_SPL_ATNMESC_tjp.pdf)
+* All the results are based on X-vector speaker embedding from [[1]](https://kaldi-asr.org/models/m6)  
+* Cosine distance (COS) is used for distance measure. [[2]](https://github.com/tango4j/Auto-Tuning-Spectral-Clustering/blob/master/2019_SPL_ATNMESC_tjp.pdf)
 
 ### Track 1: Oracle VAD  
 
