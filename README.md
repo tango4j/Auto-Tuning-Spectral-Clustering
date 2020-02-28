@@ -9,13 +9,17 @@
 * Based on Kaldi binaries, python and bash script 
 
 ## Features of Auto-tuning NME-SC method
+
 Auto-tuning NME-SC poposed method - 
 * does not need to be tuned on dev-set. (Unlike PLDA-AHC)
 * Only requires speaker embedding. (No PLDA or supervised method for distance measuring) 
 * also estimates the number of speakers in the given session. 
 * shows better performance than AHC+PLDA method in general. (See the below table)
 
-## Performance Table
+## Performance Table  
+
+* All the results are based on X-vector speaker embedding from [1](https://kaldi-asr.org/models/m6)  
+* Cosine distance (COS) is used for distance measure. [2](https://github.com/tango4j/Auto-Tuning-Spectral-Clustering/blob/master/2019_SPL_ATNMESC_tjp.pdf)
 
 ### Track 1: Oracle VAD  
 
@@ -28,7 +32,7 @@ Auto-tuning NME-SC poposed method -
 
 ### Track 2: System VAD  
 
-- Based on the [ASpIRE SAD Model](https://kaldi-asr.org/models.html) to get SAD output.
+- Based on the [ASpIRE SAD Model](https://kaldi-asr.org/models/m1) to get SAD output.
 - The performance is: Speaker Error(%) ( Total DER(%) )
 
 | System | CALLHOME | CHAES-eval | CH109 | RT03(SW) | 
