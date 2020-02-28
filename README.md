@@ -50,10 +50,10 @@ Auto-tuning NME-SC poposed method -
 
 ### Datasets
 
-CALLHOME NIST SRE 2000 (LDC2001S97):  
-CALLHOME American English Subset (CHAES) (LDC97S42):
-CH-109 (LDC97S42): 
-RT03 (LDC2007S10) : 
+CALLHOME NIST SRE 2000 (LDC2001S97): The most popular diarization dataset.  
+CHAES-eval - CALLHOME American English Subset (CHAES) (LDC97S42): English corpora for speaker diarization. train/valid/eval set.  
+CH-109 (LDC97S42): Sessions with 2 speakers in CHAES. Usually tested by providing the number of speakers.  
+RT03(SW) (LDC2007S10) : SwitchBoard part of RT03 dataset.  
 
 ### Reference
 
