@@ -42,10 +42,18 @@ Auto-tuning NME-SC poposed method -
 | __Auto-Tuning COS+NME-SC__[2]   | 5.41% <br> (11.73%) | 0.97% <br> (5.04%) | 1.32% <br> (5.61%)| 0.59% <br> (3.13%) | 
 | __Auto-Tuning COS+NMME-SC Sparse-Search-20__ | **5.41% <br> (11.73%)** | **0.97% <br> (5.04%)** | **1.32% <br> (5.61%)** | 0.59% <br> (3.13%) | 
 
+### Datasets
+
+CALLHOME NIST SRE 2000 (LDC2001S97):  
+CALLHOME American English Subset (CHAES) (LDC97S42):
+CH-109 (LDC97S42): 
+RT03 (LDC2007S10) : 
+
 ### Reference
 
 [1] [Callhome Diarization Xvector Model](https://kaldi-asr.org/models/m6)  
 [2] Tae Jin Park et. al., [Auto Tuning Spectral Clustering for SpeakerDiarization Using Normalized Maximum Eigengap](https://github.com/tango4j/Auto-Tuning-Spectral-Clustering/blob/master/2019_SPL_ATNMESC_tjp.pdf), IEEE Singal Processing Letters, 2019
+
 
 ## Getting Started
 
