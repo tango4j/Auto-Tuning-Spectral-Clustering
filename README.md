@@ -16,7 +16,7 @@
 
 Auto-tuning NME-SC poposed method - 
 * does not need to be tuned on dev-set. (Unlike PLDA-AHC)
-* Only requires speaker embedding. (No PLDA or supervised method for distance measuring) 
+* only requires speaker embedding. (No PLDA or supervised method for distance measuring) 
 * also estimates the number of speakers in the given session. 
 * shows better performance than AHC+PLDA method in general. (See the below table)
 
@@ -32,7 +32,7 @@ Auto-tuning NME-SC poposed method -
 
 | System | CALLHOME | CHAES-eval | CH109 | RT03(SW) | 
 | ----------------------------------------------|:---------:|:------:|:--------:|:--------:| 
-| PLDA + AHC [1](https://david-ryan-snyder.github.io/2018/05/04/model_callhome_diarization_v2.html) | 8.39% | 24.27% |  9.72% | 1.73% |
+| PLDA + AHC [[1]](https://david-ryan-snyder.github.io/2018/05/04/model_callhome_diarization_v2.html) | 8.39% | 24.27% |  9.72% | 1.73% |
 | Spectral Clustering COS+B-SC [2]               | 8.78%     | 4.4%   |  2.25% | __0.88%__  |   
 | __Auto-Tuning COS+NME-SC__ [2]                 | 7.29%     | 2.48%  |  2.63% | 2.21% |
 | __Auto-Tuning COS+NME-SC Sparse-Search-20__ [2]| __7.24%__ | __2.48%__ | __2.00%__ | 0.92% |
@@ -44,7 +44,7 @@ Auto-tuning NME-SC poposed method -
 
 | System | CALLHOME | CHAES-eval | CH109 | RT03(SW) | 
 | ----------------------------------------------|:--------------:|:-------------:|:------------:|:-------------:| 
-| PLDA + AHC [1](https://david-ryan-snyder.github.io/2018/05/04/model_callhome_diarization_v2.html) | 6.64% <br> (12.96%) | 1.45% <br> (5.52%) | 2.6% <br> (6.89%) | 0.99% <br> (3.53%) |
+| PLDA + AHC [[1]](https://david-ryan-snyder.github.io/2018/05/04/model_callhome_diarization_v2.html) | 6.64% <br> (12.96%) | 1.45% <br> (5.52%) | 2.6% <br> (6.89%) | 0.99% <br> (3.53%) |
 | Spectral Clustering COS+B-SC [[2]](https://github.com/tango4j/Auto-Tuning-Spectral-Clustering/blob/master/2019_SPL_ATNMESC_tjp.pdf) | 6.91% <br> (13.23%) | 1.00% <br> (5.07%) | 1.46% <br> (5.75%)| **0.56% <br> (3.1%)** |   
 | __Auto-Tuning COS+NME-SC__ [[2]](https://github.com/tango4j/Auto-Tuning-Spectral-Clustering/blob/master/2019_SPL_ATNMESC_tjp.pdf)   | 5.41% <br> (11.73%) | 0.97% <br> (5.04%) | 1.32% <br> (5.61%)| 0.59% <br> (3.13%) | 
 | __Auto-Tuning COS+NMME-SC Sparse-Search-20__[[2]](https://github.com/tango4j/Auto-Tuning-Spectral-Clustering/blob/master/2019_SPL_ATNMESC_tjp.pdf) | **5.41% <br> (11.73%)** | **0.97% <br> (5.04%)** | **1.32% <br> (5.61%)** | 0.59% <br> (3.13%) | 
