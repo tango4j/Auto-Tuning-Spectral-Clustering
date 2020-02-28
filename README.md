@@ -1,4 +1,8 @@
 
+## Python Speaker Diarization
+## Spectral Clustering Python
+## Speaker Diarization Spectral Clustering
+
 # Auto Tuning Spectral Clustering for SpeakerDiarization Using Normalized Maximum Eigengap
 
 <img src="./pics/adj_mat.png" width="40%" height="40%">
