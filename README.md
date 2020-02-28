@@ -40,8 +40,8 @@ Auto-tuning NME-SC poposed method -
 
 ### Reference
 
-[1] [Callhome Diarization Xvector Model](https://kaldi-asr.org/models/m6)
-[2] [Auto Tuning Spectral Clustering for SpeakerDiarization Using Normalized Maximum Eigengap](https://github.com/tango4j/Auto-Tuning-Spectral-Clustering/blob/master/2019_SPL_ATNMESC_tjp.pdf)
+[1] [Callhome Diarization Xvector Model](https://kaldi-asr.org/models/m6)  
+[2] Tae Jin Park et. al., [Auto Tuning Spectral Clustering for SpeakerDiarization Using Normalized Maximum Eigengap](https://github.com/tango4j/Auto-Tuning-Spectral-Clustering/blob/master/2019_SPL_ATNMESC_tjp.pdf), IEEE Singal Processing Letters, 2019
 
 ## Getting Started
 
