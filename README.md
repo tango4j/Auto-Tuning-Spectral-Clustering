@@ -20,15 +20,15 @@ Auto-tuning NME-SC poposed method -
 ### Track 1: Oracle VAD  
 
 | System | CALLHOME | CHAES-eval | CH109 | RT03(SW) | 
-| ----------------------------------------------|:---------:|:------:|:------:|:------:| 
-| Callhome Diarization Xvector Model[1]        | 8.39%     | 24.27% |  9.72% | 1.73% |
+| ----------------------------------------------|:---------:|:------:|:--------:|:--------:| 
+| Callhome Diarization Xvector Model[1]         | 8.39%     | 24.27% |  9.72% | 1.73% |
 | Spectral Clustering COS+B-SC                  | 8.78%     | 4.4%   |  2.25% | __0.88%__  |   
 | __Auto-Tuning COS+NME-SC__                    | 7.29%     | 2.48%  |  2.63% | 2.21% |
 | __Auto-Tuning COS+NME-SC Sparse-Search-20__   | __7.24%__ | __2.48%__ | __2.00%__ | 0.92% |
 
 ### Track 2: System VAD  
 
-- Based on the (ASpIRE SAD Model)[https://kaldi-asr.org/models.html] to get SAD output.
+- Based on the [ASpIRE SAD Model](https://kaldi-asr.org/models.html) to get SAD output.
 - The performance is: Speaker Error(%) ( Total DER(%) )
 
 | System | CALLHOME | CHAES-eval | CH109 | RT03(SW) | 
