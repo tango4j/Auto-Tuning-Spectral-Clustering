@@ -12,7 +12,7 @@
 
 ### Track 1: Oracle VAD  
 
-| System | CALLHOME | CHAES-eval | CH109 | RT03 | 
+| System | CALLHOME | CHAES-eval | CH109 | RT03(SW) | 
 | ----------------------------------------------|:---------:|:------:|:------:|:------:| 
 | Callhome Diarization Xvector Model            | 8.39%     | 24.27% | 9.72% | 1.73% |
 | Spectral Clustering COS+B-SC                  | 8.78%     | 4.4%  | 2.25% | __0.88%__  |   
@@ -21,7 +21,7 @@
 
 ### Track 2: System VAD  
 
-| System | CALLHOME | CHAES-eval | CH109 | RT03 | 
+| System | CALLHOME | CHAES-eval | CH109 | RT03(SW) | 
 | ----------------------------------------------|:--------------:|:-------------:|:------------:|:-------------:| 
 | Callhome Diarization Xvector Model | 6.64% <br> (12.96%) | 1.45% <br> (5.52%) | 2.6% <br> (6.89%) | 0.99% <br> (3.53%) |
 | Spectral Clustering COS+B-SC       | 6.91% <br> (13.23%) | 1.00% <br> (5.07%) | 1.46% <br> (5.75%)| 0.56% <br> (3.1%)  |   
