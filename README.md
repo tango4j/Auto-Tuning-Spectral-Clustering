@@ -45,9 +45,9 @@ Auto-tuning NME-SC poposed method -
 | System | CALLHOME | CHAES-eval | CH109 | RT03(SW) | 
 | ----------------------------------------------|:--------------:|:-------------:|:------------:|:-------------:| 
 | Callhome Diarization Xvector Model [1]| 6.64% <br> (12.96%) | 1.45% <br> (5.52%) | 2.6% <br> (6.89%) | 0.99% <br> (3.53%) |
-| Spectral Clustering COS+B-SC [2] | 6.91% <br> (13.23%) | 1.00% <br> (5.07%) | 1.46% <br> (5.75%)| **0.56% <br> (3.1%)** |   
-| __Auto-Tuning COS+NME-SC__ [2]   | 5.41% <br> (11.73%) | 0.97% <br> (5.04%) | 1.32% <br> (5.61%)| 0.59% <br> (3.13%) | 
-| __Auto-Tuning COS+NMME-SC Sparse-Search-20__[2] | **5.41% <br> (11.73%)** | **0.97% <br> (5.04%)** | **1.32% <br> (5.61%)** | 0.59% <br> (3.13%) | 
+| Spectral Clustering COS+B-SC [[2]](https://github.com/tango4j/Auto-Tuning-Spectral-Clustering/blob/master/2019_SPL_ATNMESC_tjp.pdf) | 6.91% <br> (13.23%) | 1.00% <br> (5.07%) | 1.46% <br> (5.75%)| **0.56% <br> (3.1%)** |   
+| __Auto-Tuning COS+NME-SC__ [[2]](https://github.com/tango4j/Auto-Tuning-Spectral-Clustering/blob/master/2019_SPL_ATNMESC_tjp.pdf)   | 5.41% <br> (11.73%) | 0.97% <br> (5.04%) | 1.32% <br> (5.61%)| 0.59% <br> (3.13%) | 
+| __Auto-Tuning COS+NMME-SC Sparse-Search-20__[[2]](https://github.com/tango4j/Auto-Tuning-Spectral-Clustering/blob/master/2019_SPL_ATNMESC_tjp.pdf) | **5.41% <br> (11.73%)** | **0.97% <br> (5.04%)** | **1.32% <br> (5.61%)** | 0.59% <br> (3.13%) | 
 
 ### Datasets
 
