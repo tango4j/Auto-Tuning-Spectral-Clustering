@@ -8,14 +8,22 @@
 * Spectral Clustering with auto tuning approach for speaker diarization tasks.
 * Based on Kaldi binaries, python and bash script 
 
+## Features of the Auto-tuning NME-SC method
+Auto-tuning NME-SC poposed method - 
+
+* does not need to be tuned on dev-set. (Unlike PLDA-AHC)
+* Only requires speaker embedding. (No PLDA or supervised method for distance measuring) 
+* also estimates the number of speakers in the given session. 
+* shows better performance than AHC+PLDA method in general. (See the below table)
+
 ## Performance Table
 
 ### Track 1: Oracle VAD  
 
 | System | CALLHOME | CHAES-eval | CH109 | RT03(SW) | 
 | ----------------------------------------------|:---------:|:------:|:------:|:------:| 
-| Callhome Diarization Xvector Model            | 8.39%     | 24.27% | 9.72% | 1.73% |
-| Spectral Clustering COS+B-SC                  | 8.78%     | 4.4%  | 2.25% | __0.88%__  |   
+| Callhome Diarization Xvector Model            | 8.39%     | 24.27% |  9.72% | 1.73% |
+| Spectral Clustering COS+B-SC                  | 8.78%     | 4.4%   |  2.25% | __0.88%__  |   
 | __Auto-Tuning COS+NME-SC__                    | 7.29%     | 2.48% | 2.63% | 2.21% |
 | __Auto-Tuning COS+NME-SC Sparse-Search-20__   | __7.24%__ | __2.48%__ | __2.00%__ | 0.92% |
 
