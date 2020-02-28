@@ -10,6 +10,8 @@
 
 * Code for the IEEE Signal Processing Letters (SPL) paper ["Auto-Tuning Spectral Clustering for SpeakerDiarization Using Normalized Maximum Eigengap"](https://drive.google.com/file/d/1CdEJPrpW6pRCObrppcZnw0_hRwWIHxi8/view?usp=sharing)
 
+* Bibtex:  
+
 @article{park2019auto,
   title={Auto-Tuning Spectral Clustering for Speaker Diarization Using Normalized Maximum Eigengap},
   author={Park, Tae Jin and Han, Kyu J and Kumar, Manoj and Narayanan, Shrikanth},
@@ -60,10 +62,10 @@ Auto-tuning NME-SC poposed method -
 
 ### Datasets
 
-CALLHOME NIST SRE 2000 (LDC2001S97): The most popular diarization dataset.  
-CHAES-eval - CALLHOME American English Subset (CHAES) (LDC97S42): English corpora for speaker diarization. train/valid/eval set.  
-CH-109 (LDC97S42): Sessions with 2 speakers in CHAES. Usually tested by providing the number of speakers.  
-RT03(SW) (LDC2007S10) : SwitchBoard part of RT03 dataset.  
+__CALLHOME__ NIST SRE 2000 (LDC2001S97): The most popular diarization dataset.  
+__CHAES-eval__ CALLHOME American English Subset (CHAES) (LDC97S42): English corpora for speaker diarization. train/valid/eval set.  
+__CH-109__ (LDC97S42): Sessions with 2 speakers in CHAES. Usually tested by providing the number of speakers.  
+__RT03(SW)__ (LDC2007S10) : SwitchBoard part of RT03 dataset.  
 
 ### Reference
 
