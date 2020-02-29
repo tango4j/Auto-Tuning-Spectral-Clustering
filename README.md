@@ -35,7 +35,7 @@ Auto-tuning NME-SC poposed method -
 
 * All the results are based on X-vector speaker embedding from [[1]](https://kaldi-asr.org/models/m6)  
 * Cosine distance (COS) is used for distance measure. [[2]](https://github.com/tango4j/Auto-Tuning-Spectral-Clustering/blob/master/2019_SPL_ATNMESC_tjp.pdf)
-* Sparse-Search-20 is the current version of the code, which is way faster (2~10 times) and usually more accurate.
+* Sparse-Search-20 is the current version of the code, which is way faster (2~10 times) and usually shows similar performance.
 
 ### Track 1: Oracle VAD  
 
