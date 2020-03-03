@@ -41,7 +41,7 @@ Auto-tuning NME-SC poposed method -
 
 * SAD is not applied and the oracle speaker segments are extracted from ground truth to factor out SAD performance.
 
-| System | CALLHOME | CHAES-eval | CH109 | RT03(SW) | 
+| System | CALLHOME | CHAES-eval | CH109 | RT03(SW) | AMI |
 | ----------------------------------------------|:---------:|:------:|:--------:|:------:|:------:| 
 | Kaldi PLDA + AHC [[1]](https://david-ryan-snyder.github.io/2018/05/04/model_callhome_diarization_v2.html) | 8.39% | 24.27% |  9.72% | 1.73% | - % |
 | Spectral Clustering COS+B-SC [[2]](https://github.com/tango4j/Auto-Tuning-Spectral-Clustering/blob/master/2019_SPL_ATNMESC_tjp.pdf) | 8.78% | 4.4%   |  2.25% | __0.88%__  | - % |  
