@@ -11,15 +11,15 @@
 
 
 cmd="run.pl"
-python_env=~/virtualenvs/py3_keras_venv/bin/activate
+python_env="python/env/path/not/specified"
 stage=0
-nj=10
+nj=1
 cleanup=true
 threshold=0.0
 score_metric='cos'
+out_dir='./'
 read_costs=false
 reco2num_spk='None'
-out_dir='None'
 # End configuration section.
 
 echo "$0 $@"  # Print the command line for logging
@@ -30,25 +30,12 @@ if [ -f path.sh ]; then . ./path.sh; fi
 echo "num of args: " $#
 
 if [ $# != 2 ]; then
-  echo "Usage: $0 <src-dir> <dir>"
+  echo "Usage: $0 <src-embedding-dir> <output-dir>"
   echo " e.g.: $0 exp/ivectors_callhome exp/ivectors_callhome/results"
   echo "main options (for others, see top of script file)"
-  echo "  --config <config-file>                           # config containing options"
   echo "  --cmd (utils/run.pl|utils/queue.pl <queue opts>) # how to run jobs."
-  echo "  --python_env                                     # Python path to run the python script"
-  echo "  --nj <n|10>                                      # Number of jobs (also see num-processes and num-threads)"
-  echo "  --stage <stage|0>                                # To control partial reruns"
-  echo "  --threshold <threshold|0>                        # Cluster stopping criterion. Clusters with scores greater"
-  echo "                                                   # than this value will be merged until all clusters"
-  echo "                                                   # exceed this value."
-  echo "  --read-costs <read-costs|false>                  # If true, interpret input scores as costs, i.e. similarity"
-  echo "                                                   # is indicated by smaller values. If enabled, clusters will"
-  echo "                                                   # be merged until all cluster scores are less than the"
-  echo "                                                   # threshold value."
-  echo "  --reco2num-spk <reco2num-spk-file>               # File containing mapping of recording ID"
-  echo "                                                   # to number of speakers. Used instead of threshold"
-  echo "                                                   # as stopping criterion if supplied."
-  echo "  --cleanup <bool|false>                           # If true, remove temporary files"
+  #echo "  --nj <n|10>                                      # Number of jobs (also see num-processes and num-threads)"
+  echo "  --score-metric <score-metric>                    # score metric (cos, cosAdd, etc)"
   exit 1;
 fi
 
@@ -89,15 +76,17 @@ mkdir -p $dir/log
 
 ############################################################################
 # Non parallel mode 
-echo "Starting Script: affinity_score.py"
+echo "---Starting Script: affinity_score.py"
+echo "==========="
+which python
 python affinity_score.py \
       --scp $dir/tmp/feats.scp \
-      --score-metric $score_metric \
+      --score_metric $score_metric \
       --spk2utt $dir/tmp/spk2utt \
       --utt2spk $dir/tmp/utt2spk \
       --segments $dir/tmp/segments \
       --parallel_job 1 \
-      --scores $dir/scores.scp || exit 1;
+      --scores $out_dir/scores.scp || exit 1;
 ############################################################################
 
 ############################################################################

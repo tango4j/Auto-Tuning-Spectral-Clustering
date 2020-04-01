@@ -6,12 +6,9 @@ import pprint
 import sys
 import kaldi_io
 import argparse
-import ipdb
+# import ipdb
 import copy
 import numpy as np
-import sklearn
-import modules
-import ipdb
 from sklearn.preprocessing import MinMaxScaler
 # Pretty Printer Object for printing with indenting
 pp = pprint.PrettyPrinter(indent=4)
@@ -113,8 +110,8 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--threshold', action='store', type=float, default=None)
-    parser.add_argument('--read-costs', action='store', type=str)
-    parser.add_argument('--reco2num-sess_id-rspecifier', action='store', type=str, default='None')
+    parser.add_argument('--read_costs', action='store', type=str)
+    parser.add_argument('--reco2num_sess_id_rspecifier', action='store', type=str, default='None')
     parser.add_argument('--scp', action='store', type=str, default=None)
     parser.add_argument('--scp_e2', action='store', type=str, default=None)
     parser.add_argument('--spk2utt', action='store', type=str, default=None)
@@ -122,8 +119,8 @@ if __name__ == "__main__":
     parser.add_argument('--segments', action='store', type=str, default=None)
     parser.add_argument('--scores', action='store', type=str, default=None)
     parser.add_argument('--parallel_job', action='store', type=str, default='1')
-    parser.add_argument('--score-metric', action='store', type=str, default='cos')
-    parser.add_argument('--mix-alpha', action='store', type=str, default='None')
+    parser.add_argument('--score_metric', action='store', type=str, default='cos')
+    parser.add_argument('--mix_alpha', action='store', type=str, default='None')
     parser.add_argument('--alpha_est_weights', action='store', type=str, default='None')
    
     param = parser.parse_args()
@@ -143,7 +140,7 @@ if __name__ == "__main__":
     label_out = []
     nC=-1
     if param.alpha_est_weights != 'None':
-        cont_alpha_est_weights = modules.read_txt(param.alpha_est_weights)
+        cont_alpha_est_weights = read_txt(param.alpha_est_weights)
         alpha_est_weights_dict = { x.split()[0]:float(x.split()[1]) for x in cont_alpha_est_weights }
 
     if param.score_metric == 'cos':

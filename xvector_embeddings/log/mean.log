@@ -1,0 +1,6 @@
+# ivector-mean scp:/home/inctrl/diar_working_dir/NIST_SRE_2000_CALLHOME_s_refSAD/xvector_embeddings/xvector.scp /home/inctrl/diar_working_dir/NIST_SRE_2000_CALLHOME_s_refSAD/xvector_embeddings/mean.vec 
+# Started at Thu Mar  7 12:22:17 PST 2019
+#
+ivector-mean scp:/home/inctrl/diar_working_dir/NIST_SRE_2000_CALLHOME_s_refSAD/xvector_embeddings/xvector.scp /home/inctrl/diar_working_dir/NIST_SRE_2000_CALLHOME_s_refSAD/xvector_embeddings/mean.vec 
+# Accounting: time=0 threads=1
+# Ended (code 0) at Thu Mar  7 12:22:17 PST 2019, elapsed time 0 seconds

@@ -1,4 +1,4 @@
-command line (run on 2019 Dec 10 at 21:23:25) Version: 22  /sam/home/inctrl/Dropbox/personal_prj/Auto-Tuning-Spectral-Clustering/src/md-eval.pl -1 -c 0.25 -r /sam/home/inctrl/Dropbox/personal_prj/Auto-Tuning-Spectral-Clustering/sample_CH_xvector/true_rttm/rttm -s -
+command line (run on 2020 Apr 1 at 15:25:52) Version: 22  /home/inctrl/Dropbox/personal_prj/Auto-Tuning-Spectral-Clustering/src/md-eval.pl -1 -c 0.25 -r /home/inctrl/Dropbox/personal_prj/Auto-Tuning-Spectral-Clustering/sample_CH_xvector/true_rttm/rttm -s -
 
 Time-based metadata alignment
 
@@ -43,10 +43,10 @@ FALARM SPEECH =      0.00 secs ( 0.00 percent of scored time)
 SCORED SPEAKER TIME =     82.61 secs (100.00 percent of scored speech)
 MISSED SPEAKER TIME =      0.00 secs ( 0.00 percent of scored speaker time)
 FALARM SPEAKER TIME =      0.00 secs ( 0.00 percent of scored speaker time)
- SPEAKER ERROR TIME =      0.27 secs ( 0.32 percent of scored speaker time)
+ SPEAKER ERROR TIME =      0.12 secs ( 0.15 percent of scored speaker time)
 SPEAKER ERROR WORDS =      0         (100.00 percent of scored speaker words)
 ---------------------------------------------
- OVERALL SPEAKER DIARIZATION ERROR = 0.32 percent of scored speaker time  `(ALL)
+ OVERALL SPEAKER DIARIZATION ERROR = 0.15 percent of scored speaker time  `(ALL)
 ---------------------------------------------
  Speaker type confusion matrix -- speaker weighted
   REF\SYS (count)      unknown               MISS              

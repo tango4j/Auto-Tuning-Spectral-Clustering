@@ -10,7 +10,7 @@ display_and_save_DER()
 	
 	spk_err=$(grep "SPEAKER ERROR TIME =" $1 | grep -oP "\K[0-9]+([.][0-9]+)?" - | sed -n 2p)
 
-	text_yellow_info "=={ Total Error (DER) - [ $der % ] Speaker Error - [ $spk_err % ] }=="
+	text_yellow_info "$2 Total Err. (DER) -[ $der % ] Speaker Err. [ $spk_err % ]"
 }
 
 

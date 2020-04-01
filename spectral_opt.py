@@ -372,8 +372,8 @@ class GraphSpectralClusteringClass(object):
 
    
     def npy_to_generator(self):
-        base_path = '/'.join(self.param.distance_score_file.split('/')[:-1])
-        cont = modules.read_txt(param.distance_score_file)
+        base_path = '/'.join(self.param.affinity_score_file.split('/')[:-1])
+        cont = modules.read_txt(param.affinity_score_file)
         for line in cont:
             key, npy_path = line.split()
             if os.path.exists(npy_path):
@@ -388,10 +388,10 @@ class GraphSpectralClusteringClass(object):
         
 
     def prepData(self):
-        if self.param.distance_score_file.split('.')[-1] == "scp":
+        if self.param.affinity_score_file.split('.')[-1] == "scp":
             print("=== [INFO] .scp file and .ark files were provided")
-            self.key_mat_generator_dist_score = list(kaldi_io.read_mat_scp(self.param.distance_score_file))
-        elif self.param.distance_score_file.split('.')[-1] == "txt":
+            self.key_mat_generator_dist_score = list(kaldi_io.read_mat_scp(self.param.affinity_score_file))
+        elif self.param.affinity_score_file.split('.')[-1] == "txt":
             print("=== [INFO] .txt file and .npy files were provided")
             self.key_mat_generator_dist_score = self.npy_to_generator()
 
@@ -431,17 +431,20 @@ class GraphSpectralClusteringClass(object):
         kaldi_style_lable_writer(self.labels_out_list, self.param.spk_labels_out_path)
         kaldi_style_lable_writer(self.est_num_spks_out_list, self.est_num_of_spk_out_path)
     
-    def NMEanalysis(self, mat, SPK_MAX, max_rp_threshold, sparse_search=True, search_p_volume=20):
+    def NMEanalysis(self, mat, SPK_MAX, max_rp_threshold, sparse_search=True, search_p_volume=500, fixed_thres=None):
         eps = 1e-10
         eig_ratio_list = []
-        
-        max_N = int(mat.shape[0] * max_rp_threshold)
-        if sparse_search:
-            N = min(max_N, search_p_volume)
-            p_neighbors_list = list(np.linspace(1, max_N, N, endpoint=True).astype(int))
+        if fixed_thres:
+            p_neighbors_list = [ int(mat.shape[0] * fixed_thres) ]
+            max_N = p_neighbors_list[0]
         else:
-            p_neighbors_list = list(range(1, max_N))
-        print("Scanning eig_ratio of length [{}] mat size [{}] ...".format(len(p_neighbors_list), mat.shape[0]))
+            max_N = int(mat.shape[0] * max_rp_threshold)
+            if sparse_search:
+                N = min(max_N, search_p_volume)
+                p_neighbors_list = list(np.linspace(1, max_N, N, endpoint=True).astype(int))
+            else:
+                p_neighbors_list = list(range(1, max_N))
+            print("Scanning eig_ratio of length [{}] mat size [{}] ...".format(len(p_neighbors_list), mat.shape[0]))
         
         est_spk_n_dict = {}
         for p_neighbors in p_neighbors_list:
@@ -459,17 +462,22 @@ class GraphSpectralClusteringClass(object):
         X_conn_from_dist = get_X_conn_from_dist(mat, rp_p_neighbors)
         if not isFullyConnected(X_conn_from_dist):
             X_conn_from_dist, rp_p_neighbors = gc_thres_min_gc(mat, max_N, p_neighbors_list)
+        
         return X_conn_from_dist, float(rp_p_neighbors/mat.shape[0]), est_spk_n_dict[rp_p_neighbors][0], est_spk_n_dict[rp_p_neighbors][1]
     
     @staticmethod 
-    def print_status_estNspk(idx, key, mat, threshold, est_num_of_spk, param):
+    def print_status_estNspk(idx, key, mat, rp_threshold, est_num_of_spk, param):
+        # if param.threshold != 'None':
+            # rp_threshold = float(param.threshold)
         print(idx+1, " score_metric:", param.score_metric, 
-                     " affinity matrix pruning - threshold: {:3.3f}".format(threshold),
+                     " affinity matrix pruning - threshold: {:3.3f}".format(rp_threshold),
                      " key:", key,"Est # spk: " + str(est_num_of_spk), 
                      " Max # spk:", param.max_speaker, 
                      " MAT size : ", mat.shape)
     @staticmethod 
     def print_status_givenNspk(idx, key, mat, rp_threshold, est_num_of_spk, param):
+        # if param.threshold != 'None'
+            # rp_threshold = float(param.threshold)
         print(idx+1, " score_metric:", param.score_metric,
                      " Rank based pruning - RP threshold: {:4.4f}".format(rp_threshold), 
                      " key:", key,
@@ -479,9 +487,9 @@ class GraphSpectralClusteringClass(object):
     def COSclustering(self, idx, key, mat, param):
         X_dist_raw = mat
         rp_threshold = param.threshold
-        if param.spt_est_thres in ["EigRatio", "NMESC"]:
+        if param.spt_est_thres in ["EigRatio", "NMESC"] or param.threshold == "EigRatio":
             # param.sparse_search = False
-            X_conn_from_dist, rp_threshold, est_num_of_spk, lambdas = self.NMEanalysis(mat, param.max_speaker, max_rp_threshold=0.250, sparse_search=param.sparse_search)
+            X_conn_from_dist, rp_threshold, est_num_of_spk, lambdas = self.NMEanalysis(mat, param.max_speaker, max_rp_threshold=0.250, sparse_search=param.sparse_search, search_p_volume=param.n_sparse_search)
 
         
         elif param.spt_est_thres != 'None':
@@ -493,15 +501,9 @@ class GraphSpectralClusteringClass(object):
             p_neighbors = int(mat.shape[0] * rp_threshold)
             X_conn_from_dist = get_X_conn_from_dist(X_dist_raw, p_neighbors)
         
-        elif self.use_gc_thres:
-            p_neighbors = int(mat.shape[0] * param.threshold)
-            X_conn_from_dist = get_X_conn_from_dist(mat, p_neighbors)
-        
         elif param.threshold != 'None':
             ### If score metric is not PLDA, threshold is used for similarity ranking pruning.
-            p_neighbors = int(mat.shape[0] * param.threshold)
-            X_r = get_kneighbors_conn(X_dist_raw, p_neighbors) 
-            X_conn_from_dist= 0.5 * (X_r + X_r.T)
+            X_conn_from_dist, rp_threshold, est_num_of_spk, lambdas = self.NMEanalysis(mat, param.max_speaker, max_rp_threshold=0.250, sparse_search=param.sparse_search, fixed_thres=param.threshold)
        
 
         #################################################
@@ -579,19 +581,21 @@ class GraphSpectralClusteringClass(object):
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--distance_score_file', action='store', type=str, help='Path for distance score scp')
+parser.add_argument('--affinity_score_file', action='store', type=str, help='Path for distance score scp')
 parser.add_argument('--asr_spk_turn_est_scp', action='store', type=str, help='Path for scp file with ctm list', default='None')
 parser.add_argument('--embedding_scp', action='store', type=str, help='Path for scp file embedding segment info', default='None')
 parser.add_argument('--threshold', action='store', type=str, help='Threshold ratio of distance pruning')
 parser.add_argument('--segment_file_input_path', action='store', type=str, help='Path for segment file')
 parser.add_argument('--spk_labels_out_path', action='store', type=str, help='Path for output speaker labels')
 parser.add_argument('--reco2num_spk', action='store', type=str, default='None')
-parser.add_argument('--score-metric', action='store', type=str, default='cos')
+parser.add_argument('--score_metric', action='store', type=str, default='cos')
 parser.add_argument('--max_speaker', action='store', type=int, default=8)
 parser.add_argument('--xvector_window', action='store', type=float, default=1.5)
 parser.add_argument('--spt_est_thres', action='store', type=str)
 parser.add_argument('--max_speaker_list', action='store', type=str, default='None')
-parser.add_argument('--sparse_search', action='store', type=str, default=True)
+parser.add_argument('--n_sparse_search', action='store', type=int, default=20)
+# parser.add_argument('--sparse_search', action='store', type=str, default=True)
+parser.add_argument('--sparse_search', action='store', type=str, default=False)
 
 param = parser.parse_args()
 
