@@ -12,7 +12,7 @@ import numpy as np
 import modules
 import kaldi_io
 
-
+import ipdb
 from sklearn.utils import check_random_state
 from sklearn.utils.extmath import _deterministic_vector_sign_flip
 from sklearn.utils.validation import check_array
@@ -222,17 +222,20 @@ def read_embd_seg_info(param):
         seg_id = embd_sess_line
         split_seg_info = seg_id.split('-')
         sess_id = split_seg_info[0]
-        try:
-            if len(split_seg_info) == 5:
-                offset = nps(split_seg_info[1])
-                start, end = round(offset + nps(split_seg_info[3]), 2),  round(offset + nps(split_seg_info[4]), 2)
-            elif len(split_seg_info) == 3: 
-                # start, end = round(offset + nps(split_seg_info[1]), 2),  round(offset + nps(split_seg_info[2]), 2)
+        if len(split_seg_info) == 5:
+            offset = nps(split_seg_info[1])
+            start, end = round(offset + nps(split_seg_info[3]), 2),  round(offset + nps(split_seg_info[4]), 2)
+        elif len(split_seg_info) == 3: 
+            offset = 0
+            try:
+                start, end = round(offset + nps(split_seg_info[1]), 2),  round(offset + nps(split_seg_info[2]), 2)
+            except:
+                ipdb.set_trace()
                 pass
-            else:
-                raise ValueError("Incorrect segments file format (segment id is wrong) ")
-        except:
-            raise ValueError("Incorrect segments file format.")
+        else:
+            raise ValueError("Incorrect segments file format (segment id is wrong) ")
+        # except:
+            # raise ValueError("Incorrect segments file format.")
         
         if sess_id not in embd_seg_dict:
             embd_seg_dict[sess_id] = [(start, end)]
@@ -594,8 +597,8 @@ parser.add_argument('--xvector_window', action='store', type=float, default=1.5)
 parser.add_argument('--spt_est_thres', action='store', type=str)
 parser.add_argument('--max_speaker_list', action='store', type=str, default='None')
 parser.add_argument('--n_sparse_search', action='store', type=int, default=20)
-# parser.add_argument('--sparse_search', action='store', type=str, default=True)
-parser.add_argument('--sparse_search', action='store', type=str, default=False)
+parser.add_argument('--sparse_search', action='store', type=str, default=True)
+# parser.add_argument('--sparse_search', action='store', type=str, default=False)
 
 param = parser.parse_args()
 
