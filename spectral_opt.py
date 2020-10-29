@@ -11,8 +11,8 @@ import copy
 import numpy as np
 import modules
 import kaldi_io
+from tqdm import tqdm
 
-import ipdb
 from sklearn.utils import check_random_state
 from sklearn.utils.extmath import _deterministic_vector_sign_flip
 from sklearn.utils.validation import check_array
@@ -21,6 +21,7 @@ from sklearn.cluster import KMeans
 from sklearn.cluster import SpectralClustering as sklearn_SpectralClustering
 from sklearn.base import BaseEstimator, ClusterMixin
 from sklearn.preprocessing import MinMaxScaler
+from scipy.sparse import csr_matrix
 
 import scipy 
 import scipy.sparse as sparse
@@ -113,7 +114,8 @@ def spectral_embedding(adjacency, n_components=8, eigen_solver=None,
                        norm_laplacian=True, drop_first=True):
     adjacency = check_symmetric(adjacency)
 
-    eigen_solver = 'arpack'
+    # eigen_solver = 'arpack'
+    # eigen_solver = 'amg'
     norm_laplacian=False
     random_state = check_random_state(random_state)
     n_nodes = adjacency.shape[0]
@@ -124,7 +126,7 @@ def spectral_embedding(adjacency, n_components=8, eigen_solver=None,
                                       return_diag=True)
     if (eigen_solver == 'arpack' or eigen_solver != 'lobpcg' and
        (not sparse.isspmatrix(laplacian) or n_nodes < 5 * n_components)):
-        # print("[INFILE] eigen_solver : ", eigen_solver, "norm_laplacian:", norm_laplacian)
+        print("[INFILE] eigen_solver : ", eigen_solver, "norm_laplacian:", norm_laplacian)
         laplacian = _set_diag(laplacian, 1, norm_laplacian)
 
         try:
@@ -181,8 +183,14 @@ def getLaplacian(X):
     return L
    
 def eig_decompose(L, k):
-    lambdas, eig_vecs = scipy.linalg.eigh(L)
-    # lambdas, eig_vecs = scipy.sparse.linalg.eigsh(L)
+    try:
+        lambdas, eig_vecs = scipy.linalg.eigh(L)
+    except:
+        try:
+            lambdas = scipy.linalg.eigvals(L) ### Does not increase speed
+            eig_vecs = None
+        except:
+            lambdas, eig_vecs = scipy.sparse.linalg.eigsh(L)  ### Inaccurate results
     return lambdas, eig_vecs
 
 def getLamdaGaplist(lambdas):
@@ -212,7 +220,6 @@ def nps(str_num):
     return round(float_num, 2)
 
 def read_embd_seg_info(param):
-
     open(param.embedding_scp)
     embd_seg_dict = {}
      
@@ -230,12 +237,9 @@ def read_embd_seg_info(param):
             try:
                 start, end = round(offset + nps(split_seg_info[1]), 2),  round(offset + nps(split_seg_info[2]), 2)
             except:
-                ipdb.set_trace()
                 pass
         else:
             raise ValueError("Incorrect segments file format (segment id is wrong) ")
-        # except:
-            # raise ValueError("Incorrect segments file format.")
         
         if sess_id not in embd_seg_dict:
             embd_seg_dict[sess_id] = [(start, end)]
@@ -319,8 +323,8 @@ def scp2dict(path):
 
 def checkOutput(key, seg_list, Yk):
     if len(seg_list) != Yk.shape[0]:
-        print(idx+1, "Segments file length mismatch -key:", key, len(seg_list), Yk.shape[0])
-        raise ValueError("Mismatch of lengths")
+        print("Segments file length mismatch -key:", key, "Should be:", len(seg_list), "But Yk shape got:", Yk.shape[0], 'r')
+        raise ValueError("Segments file length mismatch -key: {} Should be: {} But Yk shape got: {}".format(key, len(seg_list), Yk.shape[0]) )
         return None 
 
 
@@ -347,6 +351,7 @@ def getSegmentDict_kaldi(param):
 class GraphSpectralClusteringClass(object):
     def __init__(self, param):
         self.param = param
+
         if "." in self.param.threshold:
             self.param.threshold = float(self.param.threshold)
 
@@ -391,12 +396,25 @@ class GraphSpectralClusteringClass(object):
         
 
     def prepData(self):
+        self.nmesc_thres_list = []
         if self.param.affinity_score_file.split('.')[-1] == "scp":
             print("=== [INFO] .scp file and .ark files were provided")
             self.key_mat_generator_dist_score = list(kaldi_io.read_mat_scp(self.param.affinity_score_file))
         elif self.param.affinity_score_file.split('.')[-1] == "txt":
             print("=== [INFO] .txt file and .npy files were provided")
             self.key_mat_generator_dist_score = self.npy_to_generator()
+        
+        if self.param.affinity_score_for_spk_count != 'None':
+            if self.param.affinity_score_for_spk_count.split('.')[-1] == "scp":
+                print("=== [INFO] Speaker Count .scp file and .ark files were provided")
+                self.key_mat_generator_dist_score_spkcount = list(kaldi_io.read_mat_scp(self.param.affinity_score_for_spk_count))
+            elif self.param.affinity_score_file.split('.')[-1] == "txt":
+                print("=== [INFO] Speaker Count .txt file and .npy files were provided")
+                self.key_mat_generator_dist_score_spkcount = self.npy_to_generator()
+        elif self.param.segment_spkcount_input_path == "None":
+            print("=== [INFO] No speaker Count .scp file and .ark files. Using the original mat files")
+            self.key_mat_generator_dist_score_spkcount = self.key_mat_generator_dist_score
+
 
         if self.param.spt_est_thres in ["EigRatio", "NMESC"]:
             pass
@@ -406,15 +424,21 @@ class GraphSpectralClusteringClass(object):
 
     def performClustering(self):
         for idx, (key, mat) in enumerate(self.key_mat_generator_dist_score):
+            ### Use affinity score for speaker count (Longer segment length embeddings are recommended)
+            if self.param.affinity_score_for_spk_count != 'None':
+                modules.cprint("====== Using speaker count segments and embeddings.", "r")
+                mat_spkcount = self.key_mat_generator_dist_score_spkcount[idx][1]
+            else:
+                mat_spkcount = mat
             
             if self.param.max_speaker_list != "None":
                 self.param.max_speaker = int(maxspk_dict[key])
 
             if 'plda' in self.param.score_metric:
                 # modules.cprint("Using PLDA score thresholding mode.",'y')
-                Y = self.PLDAclustering(idx, key, mat, self.param)
+                Y = self.PLDAclustering(idx, key, mat, mat_spkcount, self.param)
             elif 'cos' in self.param.score_metric:
-                Y = self.COSclustering(idx, key, mat, self.param)
+                Y = self.COSclustering(idx, key, mat, mat_spkcount, self.param)
             else:
                 raise ValueError('self.param.score_metric contains invalid score metric:', self.param.score_metric)
            
@@ -425,6 +449,8 @@ class GraphSpectralClusteringClass(object):
             self.getOutputPaths(self.param, self.labels_out_list)
 
         modules.write_txt(self.lambdas_out_path, self.lambdas_list)
+        if param.nmesc_thres_save_path != "None" and param.spt_est_thres in ["EigRatio", "NMESC"]:
+            modules.write_txt(self.param.nmesc_thres_save_path, self.nmesc_thres_list)
         modules.cprint('Method: Spectral Clustering has been finished ', 'y')
 
     def getOutputPaths(self, param, labels_out_list):
@@ -450,7 +476,7 @@ class GraphSpectralClusteringClass(object):
             print("Scanning eig_ratio of length [{}] mat size [{}] ...".format(len(p_neighbors_list), mat.shape[0]))
         
         est_spk_n_dict = {}
-        for p_neighbors in p_neighbors_list:
+        for p_neighbors in tqdm(p_neighbors_list):
             X_conn_from_dist = get_X_conn_from_dist(mat, p_neighbors)
             est_num_of_spk, lambdas, lambda_gap_list = estimate_num_of_spkrs(X_conn_from_dist, SPK_MAX)
             est_spk_n_dict[p_neighbors] = (est_num_of_spk, lambdas)
@@ -466,7 +492,7 @@ class GraphSpectralClusteringClass(object):
         if not isFullyConnected(X_conn_from_dist):
             X_conn_from_dist, rp_p_neighbors = gc_thres_min_gc(mat, max_N, p_neighbors_list)
         
-        return X_conn_from_dist, float(rp_p_neighbors/mat.shape[0]), est_spk_n_dict[rp_p_neighbors][0], est_spk_n_dict[rp_p_neighbors][1]
+        return X_conn_from_dist, float(rp_p_neighbors/mat.shape[0]), est_spk_n_dict[rp_p_neighbors][0], est_spk_n_dict[rp_p_neighbors][1], rp_p_neighbors
     
     @staticmethod 
     def print_status_estNspk(idx, key, mat, rp_threshold, est_num_of_spk, param):
@@ -487,27 +513,59 @@ class GraphSpectralClusteringClass(object):
                      " Given Number of Speakers (reco2num_spk): " + str(est_num_of_spk), 
                      " MAT size : ", mat.shape)
 
-    def COSclustering(self, idx, key, mat, param):
+    def COSclustering(self, idx, key, mat, mat_spkcount, param):
         X_dist_raw = mat
         rp_threshold = param.threshold
         if param.spt_est_thres in ["EigRatio", "NMESC"] or param.threshold == "EigRatio":
             # param.sparse_search = False
-            X_conn_from_dist, rp_threshold, est_num_of_spk, lambdas = self.NMEanalysis(mat, param.max_speaker, max_rp_threshold=0.250, sparse_search=param.sparse_search, search_p_volume=param.n_sparse_search)
-
-        
+            modules.cprint("Running NME-SC and estimating the number of speakers...", 'r')
+            if mat_spkcount.shape[0] > param.parallel_threshold:
+                parallel_num = int(np.ceil(mat_spkcount.shape[0]/param.parallel_threshold))
+                # X_conn_from_dist_list = []
+                for kdx in range(parallel_num):
+                    modules.cprint("Calculating Eigs of {}-th sampled affinity matrix, th={}".format(kdx, param.parallel_threshold), 'y')
+                    # mat_sampled = mat_spkcount[kdx::parallel_num, kdx::parallel_num]
+                    X_conn_spkcount, rp_thres_spkcount, est_num_of_spk, lambdas, p_neigh_spkcount = self.NMEanalysis(mat_spkcount, param.max_speaker, max_rp_threshold=0.250, sparse_search=param.sparse_search, search_p_volume=param.n_sparse_search)
+                    # X_conn_from_dist_list.append(X_conn_from_dist)
+            else: 
+                X_conn_spkcount, rp_thres_spkcount, est_num_of_spk, lambdas, p_neigh_spkcount = self.NMEanalysis(mat_spkcount, param.max_speaker, max_rp_threshold=0.250, sparse_search=param.sparse_search, search_p_volume=param.n_sparse_search)
+            rp_threshold = rp_thres_spkcount 
+            self.nmesc_thres_list.append("{} {:2.3f}".format(key, rp_thres_spkcount) )
         elif param.spt_est_thres != 'None':
             if key == "iaeu":
                 rp_threshold = 0.081
             else:
                 rp_threshold = self.spt_est_thres_dict[key]
     
-            p_neighbors = int(mat.shape[0] * rp_threshold)
-            X_conn_from_dist = get_X_conn_from_dist(X_dist_raw, p_neighbors)
+            modules.cprint("Threshold text file exists: Generating X_conn matrix", 'r')
+            p_neigh_spkcount= int(mat_spkcount.shape[0] * rp_threshold)
         
         elif param.threshold != 'None':
             ### If score metric is not PLDA, threshold is used for similarity ranking pruning.
-            X_conn_from_dist, rp_threshold, est_num_of_spk, lambdas = self.NMEanalysis(mat, param.max_speaker, max_rp_threshold=0.250, sparse_search=param.sparse_search, fixed_thres=param.threshold)
-       
+            modules.cprint("Single Fixed Threshold mode: Generating X_conn matrix", 'r')
+            if mat_spkcount.shape[0] > param.parallel_threshold:
+                parallel_num = int(np.ceil(mat_spkcount.shape[0]/param.parallel_threshold))
+                X_conn_from_dist_list, est_num_of_spk_list = [], []
+                for kdx in range(parallel_num):
+                    modules.cprint("Mat size is too big: Parallely Estimating the number of {}-th sampled affinity matrix".format(kdx), 'y')
+                    # mat_sampled = mat[kdx::parallel_num, kdx::parallel_num]
+                    X_conn_spkcount, rp_thres_spkcount, est_num_of_spk, lambdas, p_neigh_spkcount = self.NMEanalysis(mat_spkcount, param.max_speaker, max_rp_threshold=0.250, sparse_search=param.sparse_search, fixed_thres=param.threshold)
+                    est_num_of_spk_list.append(est_num_of_spk)
+
+                est_num_of_spk = int(np.mean(est_num_of_spk_list))
+            else: 
+                modules.cprint("Estimating the number of the affinity matrix {}".format(key), 'y')
+                X_conn_spkcount, rp_thres_spkcount, est_num_of_spk, lambdas, p_neigh_spkcount = self.NMEanalysis(mat_spkcount, param.max_speaker, max_rp_threshold=0.250, sparse_search=param.sparse_search, fixed_thres=param.threshold)
+            rp_threshold = param.threshold 
+             
+        
+        ### X_conn_from_dist is used for actual clustering results. 
+        if mat.shape[0] != mat_spkcount.shape[0]:
+            p_neigh = int(p_neigh_spkcount * (mat.shape[0]/mat_spkcount.shape[0]))
+        else:
+            p_neigh = p_neigh_spkcount
+
+        X_conn_from_dist = get_X_conn_from_dist(mat, p_neigh)
 
         #################################################
         ### Use ASR result from turn probability file ###
@@ -533,7 +591,7 @@ class GraphSpectralClusteringClass(object):
             est_num_of_spk = int(self.reco2num_dict[key])
             ### Use the given number of speakers
             est_num_of_spk = min(est_num_of_spk, param.max_speaker) 
-            _, lambdas, lambda_gap_list = estimate_num_of_spkrs(X_conn_from_dist, param.max_speaker)
+            # _, lambdas, lambda_gap_list = estimate_num_of_spkrs(X_conn_from_dist, param.max_speaker)
             self.print_status_givenNspk(idx, key, mat, rp_threshold, est_num_of_spk, param)
 
         else: 
@@ -546,16 +604,52 @@ class GraphSpectralClusteringClass(object):
         self.est_num_spks_out_list.append( [key, str(est_num_of_spk)] ) 
         
         ### Handle the sklearn/numpy bug of eigenvalue parameter.
-        spectral_model = SparseSpectralClustering(affinity='precomputed', 
-                                                n_jobs=-2, 
+        # ipdb.set_trace()
+        spectral_model = sklearn_SpectralClustering(affinity='precomputed', 
+                                                eigen_solver='amg',
+                                                random_state=0,
+                                                n_jobs=3, 
                                                 n_clusters=est_num_of_spk,
                                                 eigen_tol=1e-10)
-
+        
+        modules.cprint("Clustering the X_conn_from_dist matrix...", "r")
         Y = spectral_model.fit_predict(X_conn_from_dist)
+
         return Y
     
+    def getMatchedLabel_Y(self, Y_list, arr_len, parallel_num, est_num_of_spk):
+        # parallel_num 
+        Y_out = np.zeros((arr_len, est_num_of_spk))
+        Y_matched_global= np.zeros((arr_len,))
+        for k, Y in enumerate(Y_list):
+            Y_arr = -1 * np.ones((Y.shape[0], est_num_of_spk))
+            Y_arr[np.arange(Y.shape[0]), Y] = 1
+            if k > 0:
+                match_dict = self.getMatchDict(Y_anchor, Y_arr)
+                matched_Y = np.array([ match_dict[y] for y in Y])
+                Y_matched_global[k::parallel_num] = matched_Y
+            else:
+                Y_matched_global[k::parallel_num] = np.array(Y)
+            Y_anchor = Y_arr
 
-    def PLDAclustering(self, idx, mat, param):
+        Y_matched_global_list = list(Y_matched_global.astype(int))
+        Y_matched_global = Y_matched_global.astype(int)
+        return Y_matched_global
+
+
+    def getMatchDict(self, Y_anchor, Y_arr):
+        min_len = min(Y_anchor.shape[0], Y_arr.shape[0])
+        Y_anchor, Y_arr = Y_anchor[:min_len,:], Y_arr[:min_len,:]
+        spk_set = set(list(range(Y_arr.shape[1])))
+        match_dict = {}
+        for k in range(Y_arr.shape[1]):
+            max_idx = np.argmax(np.sum(Y_anchor * np.expand_dims(Y_arr[:, k], axis=1), axis=0))
+            match_dict[k] = max_idx
+            Y_arr[:, max_idx] = 0
+
+        return match_dict
+    
+    def PLDAclustering(self, idx, mat, mat_spkcount, param):
         scaler.fit(mat) 
         X_dist_raw = mat
 
@@ -565,15 +659,16 @@ class GraphSpectralClusteringClass(object):
         if param.reco2num_spk != 'None': 
             ### Use the given number of speakers
             est_num_of_spk = int(self.reco2num_dict[key])
-            self.print_status_givenNspk(self, idx, key, mat, est_num_of_spk, param)
+            self.print_status_givenNspk(self, idx, key, mat_spkcount, est_num_of_spk, param)
 
         else: 
             ### Estimate the number of speakers in the given session
             est_num_of_spk, lambdas, lambda_gap_list = estimate_num_of_spkrs(X_conn_from_dist, param.max_speaker)
-            self.print_status_estNspk(self, idx, key, mat, est_num_of_spk, param)
+            self.print_status_estNspk(self, idx, key, mat_spkcount, est_num_of_spk, param)
         
         ### Handle the sklearn/numpy bug of eigenvalue parameter.
         spectral_model = SparseSpectralClustering(affinity='precomputed', 
+                                                eigen_solver='amg',
                                                 n_jobs=-2, 
                                                 n_clusters=est_num_of_spk,
                                                 eigen_tol=1e-10)
@@ -585,10 +680,13 @@ class GraphSpectralClusteringClass(object):
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--affinity_score_file', action='store', type=str, help='Path for distance score scp')
+parser.add_argument('--affinity_score_for_spk_count', action='store', type=str, help='Path for distance score scp', default='None')
+parser.add_argument('--segment_file_input_path', action='store', type=str, help='Path for segment file')
+parser.add_argument('--segment_spkcount_input_path', action='store', type=str, help='Path for spkcount segment file', default='None')
+parser.add_argument('--nmesc_thres_save_path', action='store', type=str, help='Path for segment file', default='None')
 parser.add_argument('--asr_spk_turn_est_scp', action='store', type=str, help='Path for scp file with ctm list', default='None')
 parser.add_argument('--embedding_scp', action='store', type=str, help='Path for scp file embedding segment info', default='None')
 parser.add_argument('--threshold', action='store', type=str, help='Threshold ratio of distance pruning')
-parser.add_argument('--segment_file_input_path', action='store', type=str, help='Path for segment file')
 parser.add_argument('--spk_labels_out_path', action='store', type=str, help='Path for output speaker labels')
 parser.add_argument('--reco2num_spk', action='store', type=str, default='None')
 parser.add_argument('--score_metric', action='store', type=str, default='cos')
@@ -597,11 +695,11 @@ parser.add_argument('--xvector_window', action='store', type=float, default=1.5)
 parser.add_argument('--spt_est_thres', action='store', type=str)
 parser.add_argument('--max_speaker_list', action='store', type=str, default='None')
 parser.add_argument('--n_sparse_search', action='store', type=int, default=20)
-parser.add_argument('--sparse_search', action='store', type=str, default=True)
-# parser.add_argument('--sparse_search', action='store', type=str, default=False)
+parser.add_argument('--parallel_threshold', action='store', type=int, default=6000)
+parser.add_argument('--sparse_search', action='store', type=bool, default=True)
+# parser.add_argument('--sparse_search', action='store', type=bool, default=False)
 
 param = parser.parse_args()
-
 SC = GraphSpectralClusteringClass(param)
 SC.prepData()
 SC.performClustering()
