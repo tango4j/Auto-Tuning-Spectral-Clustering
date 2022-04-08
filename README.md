@@ -10,6 +10,9 @@
 
 * Code for the IEEE Signal Processing Letters (SPL) paper ["Auto-Tuning Spectral Clustering for SpeakerDiarization Using Normalized Maximum Eigengap"](https://github.com/tango4j/Auto-Tuning-Spectral-Clustering/blob/master/2019_SPL_ATNMESC_tjp.pdf)
 
+* April/8th/2022 NME-SC, Auto-tuning spectral clustering is now main-tained at [NeMo, nmesc_clustering.py] (https://github.com/NVIDIA/NeMo/blob/c7a5a33b37c2202e1e0af7ad0eafa7b9c68f1367/nemo/collections/asr/parts/utils/nmesc_clustering.py). The NeMo version of NME-SC clustering is faster and more accurate.
+
+You could test speaker diarization with freely accessible pre-trained embeddings with NME-SC clustering algorithm. Checkout [NeMo Speaker Diarization document](https://docs.nvidia.com/deeplearning/nemo/user-guide/docs/en/main/asr/speaker_diarization/intro.html). 
 * Bibtex:  
 
 @article{park2019auto,
